@@ -5,7 +5,7 @@ const Home = () => {
    let navigate = useNavigate()
     
     return (
-        <div>
+        <div>   
 
         </div>
     )
