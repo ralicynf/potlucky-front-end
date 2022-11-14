@@ -1,12 +1,12 @@
-import axios from 'axios'
-import { useNavigate } from 'react-router-dom'
+import CreateEventForm from '../components/CreateEventForm'
 
 const NewEvent = () => {
    
     
     return (
-        <div>
-            
+        <div className='event-form'>
+            <h1>Create New Event</h1>
+            <CreateEventForm />
         </div>
     )
 

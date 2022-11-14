@@ -25,9 +25,43 @@ const CreateEventForm = () => {
         eventDetails()
     }
 
-    return (
-        <div>
+    const handleChange = (event) => {
+        setFormState({...formState, [event.target.id]: event.target.value});
+    }
 
+    return (
+        <div className="the-form">
+            <div onSubmit={handleSubmit}>
+                <label htmlFor="Event Name">Event Name:</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        id="eventName"
+                        value={formState.eventName}
+                    />
+                <label htmlFor="Event Date">Event Date:</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        id="eventDate"
+                        value={formState.eventDate}
+                    />
+                <label htmlFor="Event Location">Event Location:</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        id="eventLocation"
+                        value={formState.eventLocation}
+                    />
+                <label htmlFor="Event Description">Event Description:</label>
+                    <input
+                        onChange={handleChange}
+                        type="text"
+                        id="eventDescription"
+                        value={formState.eventDescription}
+                    />
+                <button type="submit">Submit</button>
+            </div>
         </div>
     )
 }
