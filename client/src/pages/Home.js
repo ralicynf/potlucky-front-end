@@ -5,8 +5,11 @@ const Home = () => {
    let navigate = useNavigate()
     
     return (
-        <div>   
-
+        <div>
+            <div>
+                <h3>Your Events</h3>
+            </div>  
+            
         </div>
     )
 
