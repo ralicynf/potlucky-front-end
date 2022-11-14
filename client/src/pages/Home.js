@@ -6,7 +6,10 @@ const Home = () => {
     
     return (
         <div>
-
+            <div>
+                <h3>Your Events</h3>
+            </div>  
+            
         </div>
     )
 

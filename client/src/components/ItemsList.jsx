@@ -1,5 +1,3 @@
-
-
 const ItemsList = () => {
 
     return (
