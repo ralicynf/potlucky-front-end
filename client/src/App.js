@@ -36,7 +36,7 @@ function App() {
       <NavBar user={user} handleLogout={handleLogout} />
       <main>
         <Routes>
-          <Route path="/" element={<Home />} />
+          <Route path="/" element={<Home user={user} />} />
           <Route path="/register" element={<Register />} />
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/newevent" element={<NewEvent user={user} />} />
