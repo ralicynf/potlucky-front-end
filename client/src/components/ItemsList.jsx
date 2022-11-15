@@ -10,12 +10,12 @@ const ItemsList = () => {
 
     //get current user
     const getCurrentUser = async () => {
-        const userObject = await axios.get(`/api/users/${user_id}`)
+        const userObject = await axios.get(`/api/users/`)
     }
 
     // //get current Event call
     // const getEventDetails = async () => {
-    //     const mainEvent = await axios.get(`/api/events/${event_id}`)
+    //     const mainEvent = await axios.get(`/api/events/`)
     //     setEventDetails(mainEvent.data)
     // } 
 
