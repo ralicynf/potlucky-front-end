@@ -14,10 +14,22 @@ const EventDetails = ({ user }) => {
       setEventDetails(data)
     }
     handleEventDetails()
-  }, [id])
+  }, [])
 
   return user ? (
-    <div>{/* <h3>{eventDetails.eventName}</h3> */}</div>
+    <div>
+      <h3>{eventDetails?.eventName}</h3>
+      <p>{eventDetails?.date}</p>
+      <p>{eventDetails?.location}</p>
+      <p>{eventDetails?.description}</p>
+      <p>Host (ID temp): {eventDetails?.hostId}</p>
+      <p>Guests (IDs temp): </p>
+      {eventDetails?.userId.map((guest) => (
+        <div key={guest}>
+          <p>{guest}</p>
+        </div>
+      ))}
+    </div>
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
