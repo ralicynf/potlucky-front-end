@@ -1,9 +1,7 @@
 import CreateEventForm from '../components/CreateEventForm'
 import { useNavigate } from 'react-router-dom'
 
-
 const NewEvent = ({ user }) => {
-
 
   let navigate = useNavigate()
 
