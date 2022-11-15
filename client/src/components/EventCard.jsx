@@ -2,13 +2,13 @@ const EventCard = (details) => {
 
     return (
         <div className='event-box'>
-            <div className="recipe-card" onClick={ () => {details.onClick(details.id)}}>
+            <div className="event-card" onClick={ () => {details.onClick(details.id)}}>
                 <div>
-                    <h1>{details.eventName}</h1>
+                    <h3>{details.eventName}</h3>
                 </div>
                 <div>
-                    <h3>{details.eventDate}</h3>
-                    <h3>{details.eventLocation}</h3>
+                    <p>{details.eventDate}</p>
+                    <p>{details.eventLocation}</p>
                 </div>
             </div>
         </div>

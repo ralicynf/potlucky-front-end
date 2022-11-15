@@ -1,6 +1,7 @@
 import axios from 'axios'
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import EventCard from '../components/EventCard'
 import { GetEvents } from '../services/EventServices'
 
 const Home = ({ user }) => {
@@ -15,14 +16,23 @@ const Home = ({ user }) => {
     handleEvents()
   }, [])
 
+  const viewEventDetails = (id) => {
+    navigate(`/events/${id}`)
+  }
+
   return user ? (
     <div>
       <div>
         <h3>Your Events</h3>
         {events.map((event) => (
-          <div key={event.id}>
-            <p>{event.eventName}</p>
-          </div>
+          <EventCard
+            key={event.id}
+            id={event.id}
+            eventName={event.eventName}
+            eventDate={event.date}
+            eventLocation={event.location}
+            onClick={viewEventDetails}
+          />
         ))}
       </div>
     </div>
