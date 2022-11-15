@@ -9,12 +9,12 @@ const CreateEventForm = ({ user }) => {
   const eventDetails = () => {
     navigate('/event')
   }
-  
+
   const startState = {
     eventName: '',
-    eventDate: '',
-    eventLocation: '',
-    eventDescription: '',
+    date: '',
+    location: '',
+    description: '',
     hostId: user.id
   }
 
@@ -33,7 +33,7 @@ const CreateEventForm = ({ user }) => {
 
   return (
     <div className="the-form">
-      <div onSubmit={handleSubmit}>
+      <form onSubmit={handleSubmit}>
         <div>
           <label htmlFor="Event Name">Event Name:</label>
           <input
@@ -48,8 +48,8 @@ const CreateEventForm = ({ user }) => {
           <input
             onChange={handleChange}
             type="text"
-            id="eventDate"
-            value={formState.eventDate}
+            id="date"
+            value={formState.date}
           />
         </div>
         <div>
@@ -57,8 +57,8 @@ const CreateEventForm = ({ user }) => {
           <input
             onChange={handleChange}
             type="text"
-            id="eventLocation"
-            value={formState.eventLocation}
+            id="location"
+            value={formState.location}
           />
         </div>
         <div>
@@ -66,14 +66,12 @@ const CreateEventForm = ({ user }) => {
           <input
             onChange={handleChange}
             type="text"
-            id="eventDescription"
-            value={formState.eventDescription}
+            id="description"
+            value={formState.description}
           />
         </div>
-        <div>
-          <button type="submit">Submit</button>
-        </div>
-      </div>
+        <button type="submit">Submit</button>
+      </form>
     </div>
   )
 }
