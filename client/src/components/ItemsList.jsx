@@ -9,9 +9,11 @@ const ItemsList = () => {
     //get current Event call
     const getEventDetails = async () => {
         const mainEvent = await axios.get(`/api/${event_id}`)
+        setEventDetails(mainEvent.data)
     }
 
     //get list items call
+    
 
     //const newItem 
 
