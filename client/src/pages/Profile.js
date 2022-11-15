@@ -14,9 +14,6 @@ const Profile = ({ user }) => {
         <h6>Name: </h6>
         <h6>Username:</h6>
       </div>
-      <div>
-        <h3>Events Dashboard</h3>
-      </div>
     </div>
   ) : (
     <div className="protected">

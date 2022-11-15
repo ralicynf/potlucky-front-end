@@ -7,3 +7,12 @@ export const CreateEvent = async (formData) => {
     throw error
   }
 }
+
+export const GetEvents = async () => {
+  try {
+    const res = await Client.get('/events')
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
