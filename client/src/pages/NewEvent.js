@@ -8,7 +8,7 @@ const NewEvent = ({ user }) => {
   return user ? (
     <div className="event-form">
       <h1>Create New Event</h1>
-      <CreateEventForm />
+      <CreateEventForm user={user} />
     </div>
   ) : (
     <div className="protected">

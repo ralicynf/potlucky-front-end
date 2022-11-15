@@ -9,7 +9,7 @@ const CreateEventForm = ({ user }) => {
   const eventDetails = () => {
     navigate('/event')
   }
-
+  
   const startState = {
     eventName: '',
     eventDate: '',
