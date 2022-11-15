@@ -1,8 +1,9 @@
 import axios from 'axios'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
+import { BASE_URL } from '../services/api'
 
-const CreateEventForm = () => {
+const CreateEventForm = ({user}) => {
     let navigate = useNavigate()
 
     const eventDetails = () => {
@@ -11,9 +12,10 @@ const CreateEventForm = () => {
  
     const startState = {
         eventName: '',
-        eventDate: '',
-        eventLocation: '',
-        eventDescription: ''
+        date: '',
+        location: '',
+        description: '',
+        hostId: user.id
     }
 
     const [formState, setFormState] = useState(startState)
@@ -21,6 +23,9 @@ const CreateEventForm = () => {
     const handleSubmit = async (event) => {
         event.preventDefault()
         //axios call here
+        // const res = await axios.post(`${BASE_URL}/events`, formState)
+        // console.log(res.data)
+        console.log(user.id)
         setFormState(startState)
         eventDetails()
     }
@@ -31,7 +36,7 @@ const CreateEventForm = () => {
 
     return (
         <div className="the-form">
-            <div onSubmit={handleSubmit}>
+            <form onSubmit={handleSubmit}>
                 <div>
                     <label htmlFor="Event Name">Event Name:</label>
                         <input
@@ -47,7 +52,7 @@ const CreateEventForm = () => {
                             onChange={handleChange}
                             type="text"
                             id="eventDate"
-                            value={formState.eventDate}
+                            value={formState.date}
                         />
                 </div>
                 <div>
@@ -56,7 +61,7 @@ const CreateEventForm = () => {
                             onChange={handleChange}
                             type="text"
                             id="eventLocation"
-                            value={formState.eventLocation}
+                            value={formState.location}
                         />
                 </div>
                 <div>
@@ -65,13 +70,13 @@ const CreateEventForm = () => {
                             onChange={handleChange}
                             type="text"
                             id="eventDescription"
-                            value={formState.eventDescription}
+                            value={formState.description}
                         />
                 </div>
                 <div>
                     <button type="submit">Submit</button>
                 </div>
-            </div>
+            </form>
         </div>
     )
 }
