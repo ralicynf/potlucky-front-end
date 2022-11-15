@@ -2,7 +2,8 @@ import Client from './api'
 
 export const CreateEvent = async (formData) => {
   try {
-    await Client.post('/events', formData)
+    const res = await Client.post('/events', formData)
+    return res.data
   } catch (error) {
     throw error
   }

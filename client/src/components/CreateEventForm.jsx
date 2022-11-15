@@ -6,15 +6,13 @@ import { CreateEvent } from '../services/EventServices'
 const CreateEventForm = ({ user }) => {
   let navigate = useNavigate()
 
-  const eventDetails = () => {
-    navigate('/event')
-  }
 
   const startState = {
     eventName: '',
     date: '',
     location: '',
     description: '',
+    userId: [user.id],
     hostId: user.id
   }
 
@@ -22,10 +20,10 @@ const CreateEventForm = ({ user }) => {
 
   const handleSubmit = async (event) => {
     event.preventDefault()
-    await CreateEvent(formState)
+    const newEvent = await CreateEvent(formState)
     setFormState(startState)
-    eventDetails()
-  }
+    navigate(`/events/${newEvent.id}`)
+    }
 
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
