@@ -41,7 +41,7 @@ function App() {
           <Route path="/signin" element={<SignIn setUser={setUser} />} />
           <Route path="/newevent" element={<NewEvent user={user} />} />
           <Route path="/profile" element={<Profile user={user} />} />
-          <Route path="/event" element={<EventDetails />} />
+          <Route path="/events/:id" element={<EventDetails user={user} />} />
         </Routes>
       </main>
     </div>
