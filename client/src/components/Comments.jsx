@@ -1,8 +1,15 @@
 import { useEffect, useState } from 'react'
-import { GetCommentsForEvent } from '../services/CommentServices'
+import { GetCommentsForEvent, CreateComment } from '../services/CommentServices'
 
 const Comments = ({ user, eventId }) => {
+  const initialState = {
+    userId: user.id,
+    eventId: eventId,
+    comment: ''
+  }
+
   const [comments, setComments] = useState([])
+  const [newComment, setNewComment] = useState(initialState)
 
   useEffect(() => {
     const handleComments = async () => {
@@ -13,6 +20,17 @@ const Comments = ({ user, eventId }) => {
     }
     handleComments()
   }, [])
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await CreateComment(newComment)
+    setNewComment(initialState)
+    window.location.reload(false)
+  }
+
+  const handleChange = (event) => {
+    setNewComment({ ...newComment, [event.target.id]: event.target.value })
+  }
 
   return comments.length > 0 ? (
     <div>
@@ -29,12 +47,33 @@ const Comments = ({ user, eventId }) => {
           </section>
         </div>
       ))}
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="comment">Write a comment...</label>
+        <input
+          type="text"
+          id="comment"
+          value={newComment.comment}
+          onChange={handleChange}
+        />
+        <input type="submit" style={{ display: 'none' }} />
+        {/*This ^ line comes from user193130 and their answer to this question. --> https://stackoverflow.com/questions/27807853/html5-how-to-make-a-form-submit-after-pressing-enter-at-any-of-the-text-inputs*/}
+      </form>
     </div>
   ) : (
     <div>
       <h2>-----------------------------</h2>
-      <p>write the first comment!</p>
-      <p type="text">work in progress...</p>
+      <h2>Write the first comment!</h2>
+      <form onSubmit={handleSubmit}>
+        <label htmlFor="comment">Write a comment...</label>
+        <input
+          type="text"
+          id="comment"
+          value={newComment.comment}
+          onChange={handleChange}
+        />
+        <input type="submit" style={{ display: 'none' }} />
+        {/*This ^ line comes from user193130 and their answer to this question. --> https://stackoverflow.com/questions/27807853/html5-how-to-make-a-form-submit-after-pressing-enter-at-any-of-the-text-inputs*/}
+      </form>
     </div>
   )
 }
