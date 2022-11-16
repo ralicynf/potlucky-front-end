@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetEventById } from '../services/EventServices'
+import ItemsList from '../components/oglisttobedeleted'
 
 const EventDetails = ({ user }) => {
   let { id } = useParams()
@@ -29,7 +30,11 @@ const EventDetails = ({ user }) => {
           <p>{guest}</p>
         </div>
       ))}
+      <div>
+        <ItemsList />
+      </div>
     </div>
+    
   ) : (
     <div className="protected">
       <h3>Oops! You must be signed in to do that!</h3>
