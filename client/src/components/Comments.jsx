@@ -19,7 +19,7 @@ const Comments = ({ user, eventId }) => {
       <h2>-----------------------------</h2>
       {comments.map((comment) => (
         <div className="comment" key={comment.id}>
-          <h5>{comment.userId}</h5>
+          <h5>{comment.author.username}</h5>
           <section className="comment-content">
             <p>{comment.comment}</p>
             {comment.createdAt === comment.updatedAt ? <b></b> : <b>edited</b>}
