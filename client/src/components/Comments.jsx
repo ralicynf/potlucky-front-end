@@ -19,7 +19,7 @@ const Comments = ({ user, eventId }) => {
           <h5>{user.id}</h5>
           <section className="comment-content">
             <p>{comment.comment}</p>
-            {comment.createdAt === comment.updatedAt ? <></> : <></>}
+            {comment.createdAt === comment.updatedAt ? <b></b> : <b>edited</b>}
           </section>
           <section className="comment-date">
             <h6>{comment.createdAt}</h6>

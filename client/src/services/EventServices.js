@@ -28,6 +28,15 @@ export const GetEventsByUser = async (userId) => {
   }
 }
 
+export const GetEventsByHost = async (userId) => {
+  try {
+    const res = await Client.get(`/events/host/${userId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetEventById = async (id) => {
   try {
     const res = await Client.get(`/events/${id}`)
