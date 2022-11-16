@@ -18,6 +18,16 @@ export const GetEvents = async () => {
   }
 }
 
+export const GetEventsByUser = async (userId) => {
+  try {
+    const res = await Client.get(`/users/${userId}`)
+    console.log(res)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
 export const GetEventById = async (id) => {
   try {
     const res = await Client.get(`/events/${id}`)

@@ -1,19 +1,21 @@
 import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import EventCard from '../components/EventCard'
-import { GetEvents } from '../services/EventServices'
+import { GetEventsByUser } from '../services/EventServices'
 
 const Home = ({ user }) => {
   let navigate = useNavigate()
   const [events, setEvents] = useState([])
 
+  const handleEvents = async () => {
+    const data = await GetEventsByUser(user.id)
+    setEvents(data.events)
+  }
+
   useEffect(() => {
-    const handleEvents = async () => {
-      const data = await GetEvents()
-      setEvents(data)
-    }
-    handleEvents()
-  }, [])
+    user ? handleEvents() : console.log('no user yet')
+    console.log(user)
+  }, [user])
 
   const viewEventDetails = (id) => {
     navigate(`/events/${id}`)
