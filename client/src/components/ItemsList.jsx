@@ -3,33 +3,28 @@ import ItemInput from './ItemInput'
 import Items from './Items'
 
 const ItemsList = () => {
+  const initialState = {
+    itemName: ''
+  }
 
-    const initialState = {
-        itemName: ''
-    }
+  const [items, setItems] = useState([initialState])
 
-    const [items, setItems] = useState([initialState])
+  const addItem = () => {
+    let list = [...items, 'My Item']
+    setItems(list)
+    console.log(items)
+  }
 
-    const addItem = () => {
-        let list = [...tasks, 'My Item']
-        setItems(list)
-        console.log(items)
-    }
+  const handleChange = (event) => {
+    addItem(event.target.value)
+  }
 
-    const handleChange = (event) => {
-        addItem(event.target.value)
-    }
-
-
-    return (
-        <div>
-            <ItemInput 
-                handleChange={handleChange}
-                addItem={addItem}
-            />
-            <Items items={items} />
-        </div>
-    )
+  return (
+    <div>
+      <ItemInput handleChange={handleChange} addItem={addItem} />
+      <Items items={items} />
+    </div>
+  )
 }
 
 export default ItemsList

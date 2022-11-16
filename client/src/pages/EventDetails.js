@@ -1,5 +1,6 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
+import Comments from '../components/Comments'
 import ItemsList from '../components/ItemsList'
 import { GetEventById, AddGuest } from '../services/EventServices'
 
@@ -62,15 +63,16 @@ const EventDetails = ({ user }) => {
               <button onClick={handleClick}>RSVP</button>
             </div>
           )}
+          <section className="comment-section">
+            <Comments user={user} eventId={id} />
+          </section>
         </div>
-
       ) : (
         <div>
           <h3>Please sign in or register to RSVP</h3>
           <button onClick={() => navigate('/signin')}>Sign In</button>
         </div>
       )}
-
     </div>
   )
 }
