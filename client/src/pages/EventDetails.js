@@ -1,7 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetEventById } from '../services/EventServices'
-import ItemsList from '../components/oglisttobedeleted'
+import ItemsList from '../components/ItemsList'
 
 const EventDetails = ({ user }) => {
   let { id } = useParams()
