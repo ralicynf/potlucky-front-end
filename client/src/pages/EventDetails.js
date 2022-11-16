@@ -8,7 +8,6 @@ const EventDetails = ({ user }) => {
   let { id } = useParams()
   let navigate = useNavigate()
   const [eventDetails, setEventDetails] = useState(null)
-  const [reload, setReload] = useState(true)
 
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
@@ -17,8 +16,7 @@ const EventDetails = ({ user }) => {
 
   const handleClick = async (e) => {
     await AddGuest(id, { userId: user.id })
-    // navigate(`/events/${id}`)
-    window.location.reload(false)
+    handleEventDetails()
   }
 
   useEffect(() => {

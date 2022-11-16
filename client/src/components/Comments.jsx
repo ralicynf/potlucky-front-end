@@ -11,13 +11,14 @@ const Comments = ({ user, eventId }) => {
   const [comments, setComments] = useState([])
   const [newComment, setNewComment] = useState(initialState)
 
-  useEffect(() => {
-    const handleComments = async () => {
-      const data = await GetCommentsForEvent(eventId)
-      if (data) {
-        setComments(data)
-      }
+  const handleComments = async () => {
+    const data = await GetCommentsForEvent(eventId)
+    if (data) {
+      setComments(data)
     }
+  }
+  
+  useEffect(() => {
     handleComments()
   }, [])
 
@@ -25,7 +26,8 @@ const Comments = ({ user, eventId }) => {
     e.preventDefault()
     await CreateComment(newComment)
     setNewComment(initialState)
-    window.location.reload(false)
+    handleComments()
+    // window.location.reload(false)
   }
 
   const handleChange = (event) => {
