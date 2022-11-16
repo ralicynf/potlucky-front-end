@@ -1,48 +1,30 @@
-import axios from "axios";
-import { useEffect, useState } from "react";
+import { useState } from 'react'
+import ItemInput from './ItemInput'
+import Items from './Items'
 
 const ItemsList = () => {
-    let itemToRender = <div></div>;
+  const initialState = {
+    itemName: ''
+  }
 
-    const [items, setItems] = useState([]);
-    const [eventDetails, setEventDetails] = useState();
-    const [currentUser, setCurrentUser] = useState('');
+  const [items, setItems] = useState([initialState])
 
-    //get current user
-    const getCurrentUser = async () => {
-        const userObject = await axios.get(`/api/users/`)
-    }
+  const addItem = () => {
+    let list = [...items, 'My Item']
+    setItems(list)
+    console.log(items)
+  }
 
-    // //get current Event call
-    // const getEventDetails = async () => {
-    //     const mainEvent = await axios.get(`/api/events/`)
-    //     setEventDetails(mainEvent.data)
-    // } 
+  const handleChange = (event) => {
+    addItem(event.target.value)
+  }
 
-    //get list items call
-    const getAllItems = async () => {
-        const items = await axios.get(`/api/items/`);
-        setItems(items.data)
-    }
-
-    useEffect(() => {
-        getCurrentUser(user_id)
-
-    })
-
-    //const newItem 
-   const handleSubmit = async (event) => {
-    event.preventDefault(); 
-
-    const newItem = await axios.post
-   }
-
-
-    return (
-        <div>
-
-        </div>
-    )
+  return (
+    <div>
+      <ItemInput handleChange={handleChange} addItem={addItem} />
+      <Items items={items} />
+    </div>
+  )
 }
 
 export default ItemsList
