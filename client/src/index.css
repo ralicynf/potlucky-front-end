@@ -69,9 +69,14 @@ a:active { text-decoration: none; }
   margin: 20px 0px;
   padding: 10px;
 }
+.event-card:hover {
+  opacity: .6;
+}
 
 .events-container {
   width: 75%;
+  max-width: 850px;
+  min-width: 500px;
   justify-content: space-between;
 }
 
