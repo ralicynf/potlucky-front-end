@@ -6,17 +6,20 @@ const Comments = ({ user, eventId }) => {
 
   useEffect(() => {
     const handleComments = async () => {
-      const data = await GetCommentsForEvent()
-      setComments(data)
+      const data = await GetCommentsForEvent(eventId)
+      if (data) {
+        setComments(data)
+      }
     }
     handleComments()
   }, [])
 
   return comments.length > 0 ? (
     <div>
+      <h2>-----------------------------</h2>
       {comments.map((comment) => (
-        <div key={comment.id}>
-          <h5>{user.id}</h5>
+        <div className="comment" key={comment.id}>
+          <h5>{comment.userId}</h5>
           <section className="comment-content">
             <p>{comment.comment}</p>
             {comment.createdAt === comment.updatedAt ? <b></b> : <b>edited</b>}
@@ -29,8 +32,9 @@ const Comments = ({ user, eventId }) => {
     </div>
   ) : (
     <div>
+      <h2>-----------------------------</h2>
       <p>write the first comment!</p>
-      <input type="text">work in progress...</input>
+      <p type="text">work in progress...</p>
     </div>
   )
 }

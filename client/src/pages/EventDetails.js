@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { GetEventById } from '../services/EventServices'
+import Comments from '../components/Comments'
 
 const EventDetails = ({ user }) => {
   let { id } = useParams()
@@ -43,6 +44,9 @@ const EventDetails = ({ user }) => {
           </div>
         ))}
       </div>
+      <section className="comment-section">
+        <Comments user={user} eventId={id} />
+      </section>
     </div>
   ) : (
     <div className="protected">
