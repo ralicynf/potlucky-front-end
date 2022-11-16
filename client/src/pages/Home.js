@@ -26,30 +26,36 @@ const Home = ({ user }) => {
 
   return user ? (
     <div>
-      <div>
-        <h2>Your Events</h2>
-        {events.map((event) => (
-          <EventCard
-            key={event.id}
-            id={event.id}
-            eventName={event.eventName}
-            eventDate={event.date}
-            eventLocation={event.location}
-            onClick={viewEventDetails}
-          />
-        ))}
-        <h2>-------------------------------</h2>
-        <h2>Events You Are Hosting</h2>
-        {userHostedEvents.map((event) => (
-          <EventCard
-            key={event.id}
-            id={event.id}
-            eventName={event.eventName}
-            eventDate={event.date}
-            eventLocation={event.location}
-            onClick={viewEventDetails}
-          />
-        ))}
+      <div className="flex-column">
+        <h2>Upcoming Events</h2>
+        <div className="events-container flex-row">
+          <div className="hosting-card-container">
+            <h2>Hosting</h2>
+            {userHostedEvents.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                eventName={event.eventName}
+                eventDate={event.date}
+                eventLocation={event.location}
+                onClick={viewEventDetails}
+              />
+            ))}
+          </div>
+          <div className="attending-card-container">
+            <h2>Attending</h2>
+            {events.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                eventName={event.eventName}
+                eventDate={event.date}
+                eventLocation={event.location}
+                onClick={viewEventDetails}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   ) : (
