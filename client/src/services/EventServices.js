@@ -36,3 +36,12 @@ export const GetEventById = async (id) => {
     throw error
   }
 }
+
+export const AddGuest = async (eventId, user) => {
+  try {
+    const res = await Client.post(`/events/${eventId}/addUsers`, user)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
