@@ -2,7 +2,6 @@ import axios from 'axios'
 import { useNavigate } from 'react-router-dom'
 import { useState } from 'react'
 import { SignInUser } from '../services/Auth'
-import { Link } from 'react-router-dom'
 
 const SignIn = ({ setUser }) => {
   let navigate = useNavigate()
@@ -57,7 +56,7 @@ const SignIn = ({ setUser }) => {
           </form>
           <div>
             <p>New user?</p>
-            <Link to="/register">Register</Link>
+            <button onClick={() => navigate('/register')}>Register</button>
           </div>
         </div>
       </div>

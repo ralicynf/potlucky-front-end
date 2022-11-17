@@ -25,12 +25,6 @@ const EventDetails = ({ user }) => {
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
     setEventDetails(data)
-    if (eventDetails)
-      setFormState({
-        date: eventDetails.date,
-        location: eventDetails.location,
-        description: eventDetails.description
-      })
   }
 
   const handleClick = async (e) => {
@@ -52,11 +46,17 @@ const EventDetails = ({ user }) => {
 
   const editOnClick = () => {
     setEdit(true)
+    setFormState({
+      date: eventDetails.date,
+      location: eventDetails.location,
+      description: eventDetails.description
+    })
   }
 
-  // const deleteOnClick = async (e) => {
-  //   await DeleteEvent(eventDetails.id)
-  // } I think we need cascade in our model associations, or else this needs to be a multi-step delete
+  const deleteOnClick = async (e) => {
+    await DeleteEvent(eventDetails.id)
+    navigate('/')
+  }
 
   useEffect(() => {
     handleEventDetails()
@@ -72,9 +72,7 @@ const EventDetails = ({ user }) => {
               <div>
                 <p>this is your event</p>
                 <button onClick={editOnClick}>Edit</button>
-                <button onClick={() => console.log('delete button clicked')}>
-                  Delete
-                </button>
+                <button onClick={deleteOnClick}>Delete</button>
               </div>
             ) : (
               <div>
@@ -141,10 +139,6 @@ const EventDetails = ({ user }) => {
               </div>
             )}
           </div>
-          <div>
-            <h4>Add item:</h4>
-            <ItemsList user={user} eventId={id} />
-          </div>
           {user ? (
             <div>
               {eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
@@ -159,23 +153,27 @@ const EventDetails = ({ user }) => {
             <div>
               <h3>Please sign in or register to RSVP</h3>
               <button onClick={() => navigate('/signin')}>Sign In</button>
+              <button onClick={() => navigate('/register')}>Register</button>
             </div>
           )}
         </div>
       </div>
-      <div className="events-container flex-row">
-        {user &&
-        eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
-          <div className="hosting-card-container card">
-            <div className="buffer">
-              <Comments user={user} eventId={id} />
+      {user && eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
+        <div className="events-container flex-row">
+          <div className="hosting-card-container">
+            <div className="card">
+              <div className="buffer">
+                <h4>Add item:</h4>
+                <ItemsList user={user} eventId={id} />
+              </div>
+            </div>
+            <div className="card">
+              <div className="buffer">
+                <h4>Comments:</h4>
+                <Comments user={user} eventId={id} />
+              </div>
             </div>
           </div>
-        ) : (
-          <></>
-        )}
-        {user &&
-        eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
           <div className="attending-card-container card">
             <div className="buffer">
               <h4>Who:</h4>
@@ -186,10 +184,10 @@ const EventDetails = ({ user }) => {
               ))}
             </div>
           </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   )
 }
