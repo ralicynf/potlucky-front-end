@@ -35,9 +35,11 @@ const Home = ({ user }) => {
               <EventCard
                 key={event.id}
                 id={event.id}
+                isHost={true}
                 eventName={event.eventName}
                 eventDate={event.date}
                 eventLocation={event.location}
+                eventDescription={event.description}
                 onClick={viewEventDetails}
               />
             ))}
@@ -48,9 +50,11 @@ const Home = ({ user }) => {
               <EventCard
                 key={event.id}
                 id={event.id}
+                isHost={false}
                 eventName={event.eventName}
                 eventDate={event.date}
                 eventLocation={event.location}
+                eventDescription={event.description}
                 onClick={viewEventDetails}
               />
             ))}

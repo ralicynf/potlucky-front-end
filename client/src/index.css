@@ -12,7 +12,7 @@ code {
     monospace;
 }
 
-h1 {
+h1, h2, h3, h4 {
   margin: 0;
 }
 
@@ -63,14 +63,19 @@ a:active { text-decoration: none; }
   justify-content: space-between;
 }
 
-.event-card {
+.card {
   background-color: rgb(217, 242, 254);
   filter: drop-shadow(1px 1px 2px rgb(194, 194, 194));
   margin: 20px 0px;
-  padding: 10px;
+  /* padding: 10px; */
+  border-radius: 10px;
 }
 .event-card:hover {
   opacity: .6;
+}
+
+.buffer {
+  padding: 20px;
 }
 
 .events-container {
