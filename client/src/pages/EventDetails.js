@@ -53,9 +53,10 @@ const EventDetails = ({ user }) => {
     })
   }
 
-  // const deleteOnClick = async (e) => {
-  //   await DeleteEvent(eventDetails.id)
-  // } I think we need cascade in our model associations, or else this needs to be a multi-step delete
+  const deleteOnClick = async (e) => {
+    await DeleteEvent(eventDetails.id)
+    navigate('/')
+  }
 
   useEffect(() => {
     handleEventDetails()
@@ -71,9 +72,7 @@ const EventDetails = ({ user }) => {
               <div>
                 <p>this is your event</p>
                 <button onClick={editOnClick}>Edit</button>
-                <button onClick={() => console.log('delete button clicked')}>
-                  Delete
-                </button>
+                <button onClick={deleteOnClick}>Delete</button>
               </div>
             ) : (
               <div>
@@ -154,6 +153,7 @@ const EventDetails = ({ user }) => {
             <div>
               <h3>Please sign in or register to RSVP</h3>
               <button onClick={() => navigate('/signin')}>Sign In</button>
+              <button onClick={() => navigate('/register')}>Register</button>
             </div>
           )}
         </div>
