@@ -21,7 +21,6 @@ export const GetEvents = async () => {
 export const GetEventsByUser = async (userId) => {
   try {
     const res = await Client.get(`/users/${userId}`)
-    console.log(res)
     return res.data
   } catch (error) {
     throw error
@@ -49,6 +48,24 @@ export const GetEventById = async (id) => {
 export const AddGuest = async (eventId, user) => {
   try {
     const res = await Client.post(`/events/${eventId}/addUsers`, user)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const UpdateEvent = async (eventId, update) => {
+  try {
+    const res = await Client.put(`/events/${eventId}`, update)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const DeleteEvent = async (eventId) => {
+  try {
+    const res = await Client.delete(`/events/${eventId}`)
     return res.data
   } catch (error) {
     throw error

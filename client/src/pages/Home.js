@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import EventCard from '../components/EventCard'
 import { GetEventsByUser, GetEventsByHost } from '../services/EventServices'
+import SignIn from './Signin'
 
-const Home = ({ user }) => {
+const Home = ({ user, setUser }) => {
   let navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [userHostedEvents, setUserHostedEvents] = useState([])
@@ -16,8 +17,7 @@ const Home = ({ user }) => {
   }
 
   useEffect(() => {
-    user ? handleEvents() : console.log('no user yet')
-    console.log(user)
+    if (user) handleEvents()
   }, [user])
 
   const viewEventDetails = (id) => {
@@ -26,36 +26,45 @@ const Home = ({ user }) => {
 
   return user ? (
     <div>
-      <div>
-        <h2>Your Events</h2>
-        {events.map((event) => (
-          <EventCard
-            key={event.id}
-            id={event.id}
-            eventName={event.eventName}
-            eventDate={event.date}
-            eventLocation={event.location}
-            onClick={viewEventDetails}
-          />
-        ))}
-        <h2>-------------------------------</h2>
-        <h2>Events You Are Hosting</h2>
-        {userHostedEvents.map((event) => (
-          <EventCard
-            key={event.id}
-            id={event.id}
-            eventName={event.eventName}
-            eventDate={event.date}
-            eventLocation={event.location}
-            onClick={viewEventDetails}
-          />
-        ))}
+      <div className="flex-column">
+        <h2>Upcoming Events</h2>
+        <div className="events-container flex-row">
+          <div className="hosting-card-container">
+            <h2>Hosting</h2>
+            {userHostedEvents.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                isHost={true}
+                eventName={event.eventName}
+                eventDate={event.date}
+                eventLocation={event.location}
+                eventDescription={event.description}
+                onClick={viewEventDetails}
+              />
+            ))}
+          </div>
+          <div className="attending-card-container">
+            <h2>Attending</h2>
+            {events.map((event) => (
+              <EventCard
+                key={event.id}
+                id={event.id}
+                isHost={false}
+                eventName={event.eventName}
+                eventDate={event.date}
+                eventLocation={event.location}
+                eventDescription={event.description}
+                onClick={viewEventDetails}
+              />
+            ))}
+          </div>
+        </div>
       </div>
     </div>
   ) : (
     <div className="protected">
-      <h3>Please sign in</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <SignIn setUser={setUser} />
     </div>
   )
 }
