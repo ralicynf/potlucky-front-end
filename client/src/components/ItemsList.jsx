@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { GetListItemsForEvent, AddItem } from '../services/ItemServices'
+import Avatar from 'boring-avatars'
 
 const ItemsList = ({ user, eventId }) => {
   const [items, setItems] = useState([])
@@ -34,8 +35,14 @@ const ItemsList = ({ user, eventId }) => {
   return (
     <div>
       {items?.map((item) => (
-        <div key={item.id}>
-          <p>
+        <div key={item.id} className="item-listing">
+          <Avatar
+            size={40}
+            name={item.userItems.name}
+            variant="beam"
+            colors={['#F9DED3', '#FDD1B6', '#FAB4B6', '#C7B6BE', '#89ABB4']}
+          />
+          <p id="item-listing-content">
             {item.userItems.name} is bringing {item.itemName}
           </p>
         </div>
