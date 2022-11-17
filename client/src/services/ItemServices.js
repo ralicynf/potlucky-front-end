@@ -18,3 +18,12 @@ export const AddItem = async (items) => {
     throw error
   }
 }
+
+export const DeleteItem = async (itemId) => {
+    try {
+        const res = await Client.delete(`/items/${itemId}`)
+        return res.data
+    } catch (error) {
+        throw error
+    }
+}

@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react'
-import { GetListItemsForEvent, AddItem } from '../services/ItemServices'
+import { GetListItemsForEvent, AddItem, DeleteItem } from '../services/ItemServices'
 
 const ItemsList = ({ user, eventId }) => {
   const [items, setItems] = useState([])
@@ -11,6 +11,14 @@ const ItemsList = ({ user, eventId }) => {
       setItems(items)
     }
   }
+
+  const deleteItem = async (itemId) => {
+    if (window.confirm("Are you sure you wish to delete this item?")) {
+      await DeleteItem(itemId)
+    }
+    retrieveItems()
+  }
+
 
   useEffect(() => {
     if (user) retrieveItems()
@@ -30,7 +38,7 @@ const ItemsList = ({ user, eventId }) => {
       eventId: eventId
     })
   }
-
+  
   return (
     <div>
       {items?.map((item) => (
@@ -38,6 +46,7 @@ const ItemsList = ({ user, eventId }) => {
           <p>
             {item.userItems.name} is bringing {item.itemName}
           </p>
+          <button onClick={()=> deleteItem(item.id)}>X</button>
         </div>
       ))}
       <form onSubmit={handleSubmit}>
@@ -52,47 +61,6 @@ const ItemsList = ({ user, eventId }) => {
     </div>
   )
 
-  // return items ? (
-  //   <div>
-  //     {items?.map((item) => (
-  //       <div key={item.id} className="item-list">
-  //         <div>
-  //           <ul>
-  //             <li key={item.id}>
-  //               <input type="checkbox">{item.itemName}</input>
-  //             </li>
-  //           </ul>
-  //         </div>
-  //       </div>
-  //     ))}
-  //     <form onSubmit={handleSubmit}>
-  //       <label htmlFor="item">Add item: </label>
-  //       <input
-  //         type="text"
-  //         id="itemName"
-  //         value={addItem?.itemName || ''}
-  //         onChange={handleChange}
-  //       />
-  //       <button type="submit">Add</button>
-  //     </form>
-  //   </div>
-  // ) : (
-  //   <div>
-  //     <h4>Add item:</h4>
-  //     <form onSubmit={handleSubmit}>
-  //       <label htmlFor="item">Add item: </label>
-  //       <input
-  //         type="text"
-  //         id="itemName"
-  //         value={addItem?.itemName || ''}
-  //         onChange={handleChange}
-  //       />
-  //       <button type="submit">Add</button>
-  //     </form>
-  //   </div>
-  // )
 }
 
 export default ItemsList
-
-//do we need to conditionally render so that only hosts can add? Potentially using hostId
