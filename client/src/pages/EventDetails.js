@@ -2,6 +2,7 @@ import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Comments from '../components/Comments'
 import ItemsList from '../components/ItemsList'
+import ShareLink from '../components/ShareLink'
 import {
   GetEventById,
   AddGuest,
@@ -21,6 +22,7 @@ const EventDetails = ({ user }) => {
   const [eventDetails, setEventDetails] = useState(null)
   const [edit, setEdit] = useState(false)
   const [formState, setFormState] = useState(initialState)
+  const [sharing, setSharing] = useState(false)
 
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
@@ -39,7 +41,6 @@ const EventDetails = ({ user }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     await UpdateEvent(id, formState)
-    // console.log(data)
     setEdit(false)
     handleEventDetails()
   }
@@ -67,6 +68,16 @@ const EventDetails = ({ user }) => {
       <div className="events-container card">
         <div className="buffer">
           <h2>{eventDetails?.eventName}</h2>
+          <button
+            className="share-event button"
+            type="button"
+            onClick={() => {
+              sharing ? setSharing(false) : setSharing(true)
+            }}
+          >
+            Share?
+          </button>
+          {sharing && <ShareLink setSharing={setSharing} />}
           <div>
             {user?.id === eventDetails?.hostedBy.id ? (
               <div>
@@ -87,7 +98,7 @@ const EventDetails = ({ user }) => {
                 <form onSubmit={handleSubmit}>
                   <h4>When:</h4>
                   <input
-                    type="text"
+                    type="datetime-local"
                     value={formState.date}
                     id="date"
                     onChange={handleChange}
