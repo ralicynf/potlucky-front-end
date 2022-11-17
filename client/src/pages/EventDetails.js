@@ -25,12 +25,6 @@ const EventDetails = ({ user }) => {
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
     setEventDetails(data)
-    if (eventDetails)
-      setFormState({
-        date: eventDetails.date,
-        location: eventDetails.location,
-        description: eventDetails.description
-      })
   }
 
   const handleClick = async (e) => {
@@ -52,6 +46,11 @@ const EventDetails = ({ user }) => {
 
   const editOnClick = () => {
     setEdit(true)
+    setFormState({
+      date: eventDetails.date,
+      location: eventDetails.location,
+      description: eventDetails.description
+    })
   }
 
   // const deleteOnClick = async (e) => {
