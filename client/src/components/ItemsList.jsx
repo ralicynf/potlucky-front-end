@@ -2,90 +2,66 @@ import { useState, useEffect } from 'react'
 import { GetListItemsForEvent, AddItem, DeleteItem } from '../services/ItemServices'
 
 const ItemsList = ({ user, eventId }) => {
+  const [items, setItems] = useState([])
+  const [addItem, setAddItem] = useState()
+  
 
-    //does startState need to include userId and eventId to make sure lists are specific to each event?
-    const startState = {
-        itemName: ''
+  const retrieveItems = async () => {
+    const items = await GetListItemsForEvent(eventId)
+    if (items) {
+      setItems(items)
     }
-    console.log(user)
-    
-    const [items, setItems] = useState([])
-    const [addItem, setAddItem] = useState(startState)
+  }
 
-    console.log(items)
-
-    const retrieveItems = async () => {
-        const items = await GetListItemsForEvent(eventId)
-        if (items) {
-            setItems(items)
-        }
+  const deleteItem = async (itemId) => {
+    if (window.confirm("Are you sure you wish to delete this item?")) {
+      await DeleteItem(itemId)
     }
+    retrieveItems()
+  }
 
-    // const removeItem = async (itemId) => {
-    //     if (window.confirm("Are you sure you wish to delete this item?")) {
-    //      const deleteMe = await DeleteItem(itemId)
-    //     }
-    // }
 
-    useEffect(() => {
-        retrieveItems()
-    }, [])
+  useEffect(() => {
+    if (user) retrieveItems()
+  }, [user])
 
-    const handleSubmit = async (e) => {
-        e.preventDefault()
-        await AddItem(addItem)
-        retrieveItems()
-    }
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await AddItem(addItem)
+    setAddItem(null)
+    retrieveItems()
+  }
 
-    const handleChange = (event) => {
-        console.log(event.target)
-        setAddItem({...addItem, [event.target.id]: event.target.value })
-    }
+  const handleChange = (event) => {
+    setAddItem({
+      [event.target.id]: event.target.value,
+      userId: user?.id,
+      eventId: eventId
+    })
+  }
 
-    return items ? (
-        <div>
-            {items.map((item) => (
-                <div className='item-list'>
-                    <div>
-                        <ul>
-                            <li key={item.id}>
-                                <input type='checkbox' >
-                                {item.itemName}
-                                </input>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-            ))}
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="item">Add item: </label>
-                <input 
-                    type='text'
-                    id="item"
-                    value={addItem.item}
-                    onChange={handleChange}
-                />
-                <button type='submit'></button>
-            </form>
+
+  return (
+    <div>
+      {items?.map((item) => (
+        <div key={item.id}>
+          <p>
+            {item.userItems.name} is bringing {item.itemName}
+          </p>
+          <button onClick={()=> deleteItem(item.id)}>X</button>
         </div>
-    ) : (
-        <div>
-            <h4>Add item:</h4>
-            <form onSubmit={handleSubmit}>
-                <label htmlFor="item">Add item: </label>
-                <input 
-                    type='text'
-                    id="item"
-                    value={addItem.item}
-                    onChange={handleChange}
-                />
-                <button type='submit'>Add</button>
-            </form>
-        </div>
-    )
+      ))}
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          id="itemName"
+          value={addItem?.itemName || ''}
+          onChange={handleChange}
+        />
+        <button type="submit">Add</button>
+      </form>
+    </div>
+  )
 }
 
 export default ItemsList
-
-
-//do we need to conditionally render so that only hosts can add? Potentially using hostId
