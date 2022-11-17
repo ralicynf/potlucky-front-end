@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useLocation } from 'react-router-dom'
 
-const ShareForm = ({ setSharing }) => {
+const ShareForm = () => {
   const location = useLocation()
   const [copied, setCopied] = useState(false)
 

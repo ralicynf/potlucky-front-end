@@ -77,7 +77,7 @@ const EventDetails = ({ user }) => {
           >
             Share?
           </button>
-          {sharing && <ShareLink setSharing={setSharing} />}
+          {sharing && <ShareLink />}
           <div>
             {user?.id === eventDetails?.hostedBy.id ? (
               <div>
