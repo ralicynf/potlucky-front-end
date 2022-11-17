@@ -1,23 +1,61 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Comments from '../components/Comments'
-import ItemsList from '../components/ItemsList'
-import { GetEventById, AddGuest } from '../services/EventServices'
+import {
+  GetEventById,
+  AddGuest,
+  DeleteEvent,
+  UpdateEvent
+} from '../services/EventServices'
 
 const EventDetails = ({ user }) => {
   let { id } = useParams()
   let navigate = useNavigate()
+
+  const initialState = {
+    date: '',
+    location: '',
+    description: ''
+  }
   const [eventDetails, setEventDetails] = useState(null)
+  const [edit, setEdit] = useState(false)
+  const [formState, setFormState] = useState(initialState)
 
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
     setEventDetails(data)
+    if (eventDetails)
+      setFormState({
+        date: eventDetails.date,
+        location: eventDetails.location,
+        description: eventDetails.description
+      })
   }
 
   const handleClick = async (e) => {
     await AddGuest(id, { userId: user.id })
     handleEventDetails()
   }
+
+  const handleChange = (event) => {
+    setFormState({ ...formState, [event.target.id]: event.target.value })
+  }
+
+  const handleSubmit = async (e) => {
+    e.preventDefault()
+    await UpdateEvent(id, formState)
+    // console.log(data)
+    setEdit(false)
+    handleEventDetails()
+  }
+
+  const editOnClick = () => {
+    setEdit(true)
+  }
+
+  // const deleteOnClick = async (e) => {
+  //   await DeleteEvent(eventDetails.id)
+  // } I think we need cascade in our model associations, or else this needs to be a multi-step delete
 
   useEffect(() => {
     handleEventDetails()
@@ -29,26 +67,78 @@ const EventDetails = ({ user }) => {
         <div className="buffer">
           <h2>{eventDetails?.eventName}</h2>
           <div>
-            <h4>Host:</h4>
-            <p>{eventDetails?.hostedBy.name}</p>
+            {user?.id === eventDetails?.hostedBy.id ? (
+              <div>
+                <p>this is your event</p>
+                <button onClick={editOnClick}>Edit</button>
+                <button onClick={() => console.log('delete button clicked')}>
+                  Delete
+                </button>
+              </div>
+            ) : (
+              <div>
+                <h4>Host:</h4>
+                <p>{eventDetails?.hostedBy.name}</p>
+              </div>
+            )}
           </div>
           {user ? (
             <div>
+              {edit ? (
+                <form onSubmit={handleSubmit}>
+                  <h4>When:</h4>
+                  <input
+                    type="text"
+                    value={formState.date}
+                    id="date"
+                    onChange={handleChange}
+                  />
+                </form>
+              ) : (
+                <div>
+                  <h4>When:</h4>
+                  <p>{eventDetails?.date}</p>
+                </div>
+              )}
               <div>
-                <h4>When:</h4>
-                <p>{eventDetails?.date}</p>
-              </div>
-              <div>
-                <h4>Where:</h4>
-                <p>{eventDetails?.location}</p>
+                {edit ? (
+                  <form onSubmit={handleSubmit}>
+                    <h4>Where:</h4>
+                    <input
+                      type="text"
+                      value={formState.location}
+                      id="location"
+                      onChange={handleChange}
+                    />
+                  </form>
+                ) : (
+                  <div>
+                    <h4>Where:</h4>
+                    <p>{eventDetails?.location}</p>
+                  </div>
+                )}
               </div>
             </div>
           ) : (
             <div></div>
           )}
           <div>
-            <h4>What:</h4>
-            <p>{eventDetails?.description}</p>
+            {edit ? (
+              <form onSubmit={handleSubmit}>
+                <h4>What:</h4>
+                <input
+                  type="text"
+                  value={formState.description}
+                  id="description"
+                  onChange={handleChange}
+                />
+              </form>
+            ) : (
+              <div>
+                <h4>What:</h4>
+                <p>{eventDetails?.description}</p>
+              </div>
+            )}
           </div>
           {user ? (
             <div>

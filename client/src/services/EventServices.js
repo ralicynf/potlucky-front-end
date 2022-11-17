@@ -53,3 +53,21 @@ export const AddGuest = async (eventId, user) => {
     throw error
   }
 }
+
+export const UpdateEvent = async (eventId, update) => {
+  try {
+    const res = await Client.put(`/events/${eventId}`, update)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
+
+export const DeleteEvent = async (eventId) => {
+  try {
+    const res = await Client.delete(`/events/${eventId}`)
+    return res.data
+  } catch (error) {
+    throw error
+  }
+}
