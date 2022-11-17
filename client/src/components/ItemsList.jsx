@@ -3,10 +3,11 @@ import { GetListItemsForEvent, AddItem } from '../services/ItemServices'
 
 const ItemsList = ({ user, eventId }) => {
   //does startState need to include userId and eventId to make sure lists are specific to each event?
-  const startState = {
-    itemName: ''
+  const startState = user && {
+    itemName: '',
+    eventId: eventId,
+    userId: user.id
   }
-  console.log(user)
 
   const [items, setItems] = useState([])
   const [addItem, setAddItem] = useState(startState)
@@ -21,8 +22,8 @@ const ItemsList = ({ user, eventId }) => {
   }
 
   useEffect(() => {
-    retrieveItems()
-  }, [])
+    if (user) retrieveItems()
+  }, [user])
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -31,7 +32,6 @@ const ItemsList = ({ user, eventId }) => {
   }
 
   const handleChange = (event) => {
-    console.log(event.target)
     setAddItem({ ...addItem, [event.target.id]: event.target.value })
   }
 
@@ -52,11 +52,11 @@ const ItemsList = ({ user, eventId }) => {
         <label htmlFor="item">Add item: </label>
         <input
           type="text"
-          id="item"
-          value={addItem.item}
+          id="itemName"
+          value={addItem?.itemName || ''}
           onChange={handleChange}
         />
-        <button type="submit"></button>
+        <button type="submit">Add</button>
       </form>
     </div>
   ) : (
@@ -66,11 +66,11 @@ const ItemsList = ({ user, eventId }) => {
         <label htmlFor="item">Add item: </label>
         <input
           type="text"
-          id="item"
-          value={addItem.item}
+          id="itemName"
+          value={addItem?.itemName || ''}
           onChange={handleChange}
         />
-        <button type="submit"></button>
+        <button type="submit">Add</button>
       </form>
     </div>
   )

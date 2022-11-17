@@ -44,7 +44,7 @@ const CreateEventForm = ({ user }) => {
           <label htmlFor="Event Date">Event Date:</label>
           <input
             onChange={handleChange}
-            type="date"
+            type="datetime-local"
             id="date"
             value={formState.date}
           />
@@ -60,9 +60,10 @@ const CreateEventForm = ({ user }) => {
         </div>
         <div>
           <label htmlFor="Event Description">Event Description:</label>
-          <input
+          <textarea
+            rows="4"
+            cols="50"
             onChange={handleChange}
-            type="text"
             id="description"
             value={formState.description}
           />
