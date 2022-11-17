@@ -17,7 +17,7 @@ const Comments = ({ user, eventId }) => {
       setComments(data)
     }
   }
-  
+
   useEffect(() => {
     handleComments()
   }, [])
@@ -27,7 +27,6 @@ const Comments = ({ user, eventId }) => {
     await CreateComment(newComment)
     setNewComment(initialState)
     handleComments()
-    // window.location.reload(false)
   }
 
   const handleChange = (event) => {
@@ -56,8 +55,6 @@ const Comments = ({ user, eventId }) => {
           value={newComment.comment}
           onChange={handleChange}
         />
-        <input type="submit" style={{ display: 'none' }} />
-        {/*This ^ line comes from user193130 and their answer to this question. --> https://stackoverflow.com/questions/27807853/html5-how-to-make-a-form-submit-after-pressing-enter-at-any-of-the-text-inputs*/}
       </form>
     </div>
   ) : (
@@ -71,8 +68,6 @@ const Comments = ({ user, eventId }) => {
           value={newComment.comment}
           onChange={handleChange}
         />
-        <input type="submit" style={{ display: 'none' }} />
-        {/*This ^ line comes from user193130 and their answer to this question. --> https://stackoverflow.com/questions/27807853/html5-how-to-make-a-form-submit-after-pressing-enter-at-any-of-the-text-inputs*/}
       </form>
     </div>
   )
