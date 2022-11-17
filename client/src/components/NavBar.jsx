@@ -39,5 +39,3 @@ const NavBar = ({ user, handleLogout }) => {
 }
 
 export default NavBar
-
-//things to do: conditionally render so that SignIn and SignOut are interchangeable
