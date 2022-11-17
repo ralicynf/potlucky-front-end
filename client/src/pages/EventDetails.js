@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Comments from '../components/Comments'
+import ItemsList from '../components/ItemsList'
 import {
   GetEventById,
   AddGuest,
@@ -83,11 +84,11 @@ const EventDetails = ({ user }) => {
             )}
           </div>
 
-            <div>
-                <h4>What to Bring:</h4>
-                <ItemsList />
-            </div>
-            
+          <div>
+            <h4>What to Bring:</h4>
+            <ItemsList user={user} eventId={id} />
+          </div>
+
           <div>
             {edit ? (
               <form onSubmit={handleSubmit}>
