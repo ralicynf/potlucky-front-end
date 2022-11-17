@@ -140,10 +140,6 @@ const EventDetails = ({ user }) => {
               </div>
             )}
           </div>
-          <div>
-            <h4>Add item:</h4>
-            <ItemsList user={user} eventId={id} />
-          </div>
           {user ? (
             <div>
               {eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
@@ -162,19 +158,22 @@ const EventDetails = ({ user }) => {
           )}
         </div>
       </div>
-      <div className="events-container flex-row">
-        {user &&
-        eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
-          <div className="hosting-card-container card">
-            <div className="buffer">
-              <Comments user={user} eventId={id} />
+      {user && eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
+        <div className="events-container flex-row">
+          <div className="hosting-card-container">
+            <div className="card">
+              <div className="buffer">
+                <h4>Add item:</h4>
+                <ItemsList user={user} eventId={id} />
+              </div>
+            </div>
+            <div className="card">
+              <div className="buffer">
+                <h4>Comments:</h4>
+                <Comments user={user} eventId={id} />
+              </div>
             </div>
           </div>
-        ) : (
-          <></>
-        )}
-        {user &&
-        eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
           <div className="attending-card-container card">
             <div className="buffer">
               <h4>Who:</h4>
@@ -185,10 +184,10 @@ const EventDetails = ({ user }) => {
               ))}
             </div>
           </div>
-        ) : (
-          <div></div>
-        )}
-      </div>
+        </div>
+      ) : (
+        <div></div>
+      )}
     </div>
   )
 }
