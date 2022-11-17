@@ -22,7 +22,7 @@ const SignIn = ({ setUser }) => {
     const payload = await SignInUser(formState)
     setUser(payload)
     setFormState(startState)
-    navigate('/profile')
+    navigate('/')
   }
 
   return (
