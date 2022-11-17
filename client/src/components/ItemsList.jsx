@@ -4,7 +4,6 @@ import { GetListItemsForEvent, AddItem, DeleteItem } from '../services/ItemServi
 const ItemsList = ({ user, eventId }) => {
   const [items, setItems] = useState([])
   const [addItem, setAddItem] = useState()
-  
 
   const retrieveItems = async () => {
     const items = await GetListItemsForEvent(eventId)
@@ -39,8 +38,7 @@ const ItemsList = ({ user, eventId }) => {
       eventId: eventId
     })
   }
-
-
+  
   return (
     <div>
       {items?.map((item) => (
@@ -62,6 +60,7 @@ const ItemsList = ({ user, eventId }) => {
       </form>
     </div>
   )
+
 }
 
 export default ItemsList

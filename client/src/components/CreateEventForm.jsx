@@ -6,7 +6,6 @@ import { CreateEvent } from '../services/EventServices'
 const CreateEventForm = ({ user }) => {
   let navigate = useNavigate()
 
-
   const startState = {
     eventName: '',
     date: '',
@@ -23,7 +22,7 @@ const CreateEventForm = ({ user }) => {
     const newEvent = await CreateEvent(formState)
     setFormState(startState)
     navigate(`/events/${newEvent.id}`)
-    }
+  }
 
   const handleChange = (event) => {
     setFormState({ ...formState, [event.target.id]: event.target.value })
@@ -45,7 +44,7 @@ const CreateEventForm = ({ user }) => {
           <label htmlFor="Event Date">Event Date:</label>
           <input
             onChange={handleChange}
-            type="text"
+            type="datetime-local"
             id="date"
             value={formState.date}
           />
@@ -61,9 +60,10 @@ const CreateEventForm = ({ user }) => {
         </div>
         <div>
           <label htmlFor="Event Description">Event Description:</label>
-          <input
+          <textarea
+            rows="4"
+            cols="50"
             onChange={handleChange}
-            type="text"
             id="description"
             value={formState.description}
           />
