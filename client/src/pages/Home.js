@@ -40,6 +40,8 @@ const Home = ({ user, setUser }) => {
                 eventDate={event.date}
                 eventLocation={event.location}
                 eventDescription={event.description}
+                items={event.items}
+                userId={user.id}
                 onClick={viewEventDetails}
               />
             ))}
@@ -55,6 +57,8 @@ const Home = ({ user, setUser }) => {
                 eventDate={event.date}
                 eventLocation={event.location}
                 eventDescription={event.description}
+                items={event.items}
+                userId={user.id}
                 onClick={viewEventDetails}
               />
             ))}

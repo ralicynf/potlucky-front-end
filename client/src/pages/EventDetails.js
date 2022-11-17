@@ -141,7 +141,8 @@ const EventDetails = ({ user }) => {
           </div>
           {user ? (
             <div>
-              {eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
+              {eventDetails?.attendees.find((guest) => guest.id === user.id) ||
+              user?.id === eventDetails?.hostedBy.id ? (
                 <></>
               ) : (
                 <div>
@@ -158,7 +159,9 @@ const EventDetails = ({ user }) => {
           )}
         </div>
       </div>
-      {user && eventDetails?.attendees.find((guest) => guest.id === user.id) ? (
+      {user &&
+      (eventDetails?.attendees.find((guest) => guest.id === user.id) ||
+        user?.id === eventDetails?.hostedBy.id) ? (
         <div className="events-container flex-row">
           <div className="hosting-card-container">
             <div className="card">
