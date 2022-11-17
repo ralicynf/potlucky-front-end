@@ -27,7 +27,7 @@ const EventDetails = ({ user }) => {
     <div className="flex-column">
       <div className="events-container card">
         <div className="buffer">
-          <h3>{eventDetails?.eventName}</h3>
+          <h2>{eventDetails?.eventName}</h2>
           <div>
             <h4>Host:</h4>
             <p>{eventDetails?.hostedBy.name}</p>

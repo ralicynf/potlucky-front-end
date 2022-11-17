@@ -2,8 +2,9 @@ import { useEffect, useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import EventCard from '../components/EventCard'
 import { GetEventsByUser, GetEventsByHost } from '../services/EventServices'
+import SignIn from './Signin'
 
-const Home = ({ user }) => {
+const Home = ({ user, setUser }) => {
   let navigate = useNavigate()
   const [events, setEvents] = useState([])
   const [userHostedEvents, setUserHostedEvents] = useState([])
@@ -16,8 +17,7 @@ const Home = ({ user }) => {
   }
 
   useEffect(() => {
-    user ? handleEvents() : console.log('no user yet')
-    console.log(user)
+    if (user) handleEvents()
   }, [user])
 
   const viewEventDetails = (id) => {
@@ -64,8 +64,7 @@ const Home = ({ user }) => {
     </div>
   ) : (
     <div className="protected">
-      <h3>Please sign in</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <SignIn setUser={setUser} />
     </div>
   )
 }
