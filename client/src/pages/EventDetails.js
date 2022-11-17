@@ -45,6 +45,10 @@ const EventDetails = ({ user }) => {
             <h4>Where:</h4>
             <p>{eventDetails?.location}</p>
           </div>
+            <div>
+                <h4>What to Bring:</h4>
+                <ItemsList />
+            </div>
           <div>
             <h4>Who:</h4>
             {eventDetails?.attendees.map((guest) => (
