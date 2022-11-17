@@ -36,7 +36,6 @@ const Comments = ({ user, eventId }) => {
 
   return comments.length > 0 ? (
     <div>
-      <h2>-----------------------------</h2>
       {comments.map((comment) => (
         <div className="comment" key={comment.id}>
           <h5>{comment.author.username}</h5>
@@ -63,7 +62,6 @@ const Comments = ({ user, eventId }) => {
     </div>
   ) : (
     <div>
-      <h2>-----------------------------</h2>
       <h2>Write the first comment!</h2>
       <form onSubmit={handleSubmit}>
         <label htmlFor="comment">Write a comment...</label>
