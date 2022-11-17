@@ -1,11 +1,10 @@
 import { useState, useEffect } from 'react'
-import { GetListItemsForEvent, AddItem } from '../services/ItemServices'
+import { GetListItemsForEvent, AddItem, DeleteItem } from '../services/ItemServices'
 
 const ItemsList = ({ user, eventId }) => {
 
     //does startState need to include userId and eventId to make sure lists are specific to each event?
     const startState = {
-
         itemName: ''
     }
     console.log(user)
@@ -21,6 +20,12 @@ const ItemsList = ({ user, eventId }) => {
             setItems(items)
         }
     }
+
+    // const removeItem = async (itemId) => {
+    //     if (window.confirm("Are you sure you wish to delete this item?")) {
+    //      const deleteMe = await DeleteItem(itemId)
+    //     }
+    // }
 
     useEffect(() => {
         retrieveItems()
@@ -74,7 +79,7 @@ const ItemsList = ({ user, eventId }) => {
                     value={addItem.item}
                     onChange={handleChange}
                 />
-                <button type='submit'></button>
+                <button type='submit'>Add</button>
             </form>
         </div>
     )

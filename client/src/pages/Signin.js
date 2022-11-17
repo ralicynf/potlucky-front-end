@@ -31,9 +31,10 @@ const SignIn = ({ setUser }) => {
       <div className="events-container card">
         <div className="buffer">
           <form className="sign-in-box" onSubmit={handleSubmit}>
-            <div>
+            <div className='things'>
               <label htmlFor="email">Email</label>
               <input
+                className='login-input'
                 onChange={handleChange}
                 name="email"
                 type="text"
@@ -42,9 +43,10 @@ const SignIn = ({ setUser }) => {
                 required
               />
             </div>
-            <div>
+            <div className='things'>
               <label htmlFor="password">Password</label>
               <input
+                className='login-input'
                 onChange={handleChange}
                 name="password"
                 type="password"
@@ -53,7 +55,9 @@ const SignIn = ({ setUser }) => {
                 required
               />
             </div>
-            <button>Sign in!</button>
+            <div id='login-button'>
+              <button id='login-btn'>Sign in!</button>
+            </div>
           </form>
           <div>
             <p>New user?</p>

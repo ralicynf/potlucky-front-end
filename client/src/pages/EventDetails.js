@@ -1,6 +1,7 @@
 import { useParams, useNavigate } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import Comments from '../components/Comments'
+import ItemsList from '../components/ItemsList'
 import {
   GetEventById,
   AddGuest,
