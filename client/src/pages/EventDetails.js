@@ -83,12 +83,46 @@ const EventDetails = ({ user }) => {
               </div>
             )}
           </div>
-
-          <div>
-            <h4>What to Bring:</h4>
-            <ItemsList user={user} eventId={id} />
-          </div>
-
+          {user ? (
+            <div>
+              {edit ? (
+                <form onSubmit={handleSubmit}>
+                  <h4>When:</h4>
+                  <input
+                    type="text"
+                    value={formState.date}
+                    id="date"
+                    onChange={handleChange}
+                  />
+                </form>
+              ) : (
+                <div>
+                  <h4>When:</h4>
+                  <p>{eventDetails?.date}</p>
+                </div>
+              )}
+              <div>
+                {edit ? (
+                  <form onSubmit={handleSubmit}>
+                    <h4>Where:</h4>
+                    <input
+                      type="text"
+                      value={formState.location}
+                      id="location"
+                      onChange={handleChange}
+                    />
+                  </form>
+                ) : (
+                  <div>
+                    <h4>Where:</h4>
+                    <p>{eventDetails?.location}</p>
+                  </div>
+                )}
+              </div>
+            </div>
+          ) : (
+            <div></div>
+          )}
           <div>
             {edit ? (
               <form onSubmit={handleSubmit}>
@@ -106,6 +140,10 @@ const EventDetails = ({ user }) => {
                 <p>{eventDetails?.description}</p>
               </div>
             )}
+          </div>
+          <div>
+            <h4>Add item:</h4>
+            <ItemsList user={user} eventId={id} />
           </div>
           {user ? (
             <div>
