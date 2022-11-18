@@ -137,8 +137,8 @@ const EventDetails = ({ user }) => {
                   <div>
                     <h4>When:</h4>
                     <p>
-                      {formatDate(eventDetails.date)} at{' '}
-                      {formatTime(eventDetails.date)}
+                      {formatDate(eventDetails?.date)} at{' '}
+                      {formatTime(eventDetails?.date)}
                     </p>
                     <h4>Where:</h4>
                     <p>{eventDetails?.location}</p>
