@@ -65,6 +65,16 @@ const EventDetails = ({ user }) => {
     handleEventDetails()
   }, [user])
 
+  const formatDate = (dateString) => {
+    const options = { year: 'numeric', month: 'long', day: 'numeric' }
+    return new Date(dateString).toLocaleDateString(undefined, options)
+  }
+
+  const formatTime = (dateString) => {
+    const options = { timeStyle: 'short' }
+    return new Date(dateString).toLocaleTimeString('en-US', options)
+  }
+
   return (
     <div className="flex-column">
       <div className="events-container card">
@@ -126,7 +136,10 @@ const EventDetails = ({ user }) => {
                 {user && (
                   <div>
                     <h4>When:</h4>
-                    <p>{eventDetails?.date}</p>
+                    <p>
+                      {formatDate(eventDetails.date)} at{' '}
+                      {formatTime(eventDetails.date)}
+                    </p>
                     <h4>Where:</h4>
                     <p>{eventDetails?.location}</p>
                   </div>
