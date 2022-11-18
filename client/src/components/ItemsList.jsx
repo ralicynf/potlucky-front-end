@@ -46,6 +46,7 @@ const ItemsList = ({ user, eventId }) => {
   return (
     <div>
       {items?.map((item) => (
+
         <div key={item.id} className="item-listing">
           <Avatar
             size={40}
@@ -56,7 +57,10 @@ const ItemsList = ({ user, eventId }) => {
           <p id="item-listing-content">
             {item.userItems.name} is bringing {item.itemName}
           </p>
-          <button onClick={() => deleteItem(item.id)}>X</button>
+          <div>
+          {item.userId === user.id ? <button onClick={()=> deleteItem(item.id)}>X</button> : <></>}
+          </div>
+
         </div>
       ))}
       <form onSubmit={handleSubmit}>
