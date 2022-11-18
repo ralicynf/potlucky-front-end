@@ -1,7 +1,21 @@
-import { Link } from 'react-router-dom'
+import { Link, useNavigate } from 'react-router-dom'
+import { GetEvents } from '../services/EventServices'
 
-const NavBar = ({ user, handleLogout }) => {
+const NavBar = ({ user, handleLogout, randomEvent }) => {
   let authenticatedOptions
+  let navigate = useNavigate()
+
+  const getRandomEvent = async () => {
+    console.log('firing')
+    let events = await GetEvents()
+    if (events) {
+      console.log('i got events!')
+      let randomEvent = events[Math.floor(Math.random() * events.length)]
+      navigate(`/events/${randomEvent.id}`)
+      window.location.reload(false)
+    }
+  }
+
   if (user) {
     authenticatedOptions = (
       <nav className="flex-row nav-links">
@@ -9,6 +23,8 @@ const NavBar = ({ user, handleLogout }) => {
         <Link to="/">Home</Link>
         {/* <Link to="/profile">Profile</Link> */}
         <Link to="/newevent">Create Event</Link>
+        <a onClick={getRandomEvent}>Feeling PotLucky?</a>
+        {/* <Link to={`/events/${randomEvent}`}>Feeling Potlucky?</Link> */}
         <Link onClick={handleLogout} to="/">
           Sign Out
         </Link>
