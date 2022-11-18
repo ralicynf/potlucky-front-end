@@ -1,7 +1,8 @@
 import CreateEventForm from '../components/CreateEventForm'
 import { useNavigate } from 'react-router-dom'
+import SignIn from './Signin'
 
-const NewEvent = ({ user }) => {
+const NewEvent = ({ user, setUser }) => {
   let navigate = useNavigate()
 
   return user ? (
@@ -15,8 +16,7 @@ const NewEvent = ({ user }) => {
     </div>
   ) : (
     <div className="protected">
-      <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
+      <SignIn setUser={setUser} />
     </div>
   )
 }
