@@ -32,35 +32,39 @@ const Home = ({ user, setUser }) => {
           <div className="hosting-card-container">
             <h2 className='title'>Hosting</h2>
             {userHostedEvents.map((event) => (
-              <EventCard
-                key={event.id}
-                id={event.id}
-                isHost={true}
-                eventName={event.eventName}
-                eventDate={event.date}
-                eventLocation={event.location}
-                eventDescription={event.description}
-                items={event.items}
-                userId={user.id}
-                onClick={viewEventDetails}
-              />
+              <div className='main-card'>
+                <EventCard
+                  key={event.id}
+                  id={event.id}
+                  isHost={true}
+                  eventName={event.eventName}
+                  eventDate={event.date}
+                  eventLocation={event.location}
+                  eventDescription={event.description}
+                  items={event.items}
+                  userId={user.id}
+                  onClick={viewEventDetails}
+                />
+              </div>
             ))}
           </div>
           <div className="attending-card-container">
             <h2 className='title'>Attending</h2>
             {events.map((event) => (
-              <EventCard
-                key={event.id}
-                id={event.id}
-                isHost={false}
-                eventName={event.eventName}
-                eventDate={event.date}
-                eventLocation={event.location}
-                eventDescription={event.description}
-                items={event.items}
-                userId={user.id}
-                onClick={viewEventDetails}
-              />
+              <div className='attend-card'>
+                <EventCard
+                  key={event.id}
+                  id={event.id}
+                  isHost={false}
+                  eventName={event.eventName}
+                  eventDate={event.date}
+                  eventLocation={event.location}
+                  eventDescription={event.description}
+                  items={event.items}
+                  userId={user.id}
+                  onClick={viewEventDetails}
+                />
+              </div>
             ))}
           </div>
         </div>

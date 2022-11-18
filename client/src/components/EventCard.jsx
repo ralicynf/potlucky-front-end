@@ -23,8 +23,8 @@ const EventCard = (details) => {
                           <p>{details.eventLocation}</p>
                         </div>
                         {details.isHost ? (
-                            <div>
-                                <p>{details.eventDescription}</p>
+                            <div className='details-description'>
+                                <h4>{details.eventDescription}</h4>
                             </div>
                         ) : (
                         <div>

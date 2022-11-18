@@ -9,7 +9,7 @@ const NewEvent = ({ user, setUser }) => {
     <div className="flex-column">
       <div className="events-container card">
         <div className="buffer">
-          <h2>Create New Event</h2>
+          <h2 id="new-event-logo">Create New Event</h2>
           <CreateEventForm user={user} />
         </div>
       </div>
