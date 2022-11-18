@@ -31,7 +31,7 @@ const CreateEventForm = ({ user }) => {
   return (
     <div className="the-form">
       <form onSubmit={handleSubmit}>
-        <div>
+        <div className="e-name">
           <label htmlFor="Event Name">Event Name:</label>
           <input
             onChange={handleChange}
@@ -40,7 +40,7 @@ const CreateEventForm = ({ user }) => {
             value={formState.eventName}
           />
         </div>
-        <div>
+        <div className="e-date">
           <label htmlFor="Event Date">Event Date:</label>
           <input
             onChange={handleChange}
@@ -49,7 +49,7 @@ const CreateEventForm = ({ user }) => {
             value={formState.date}
           />
         </div>
-        <div>
+        <div className='e-loc'>
           <label htmlFor="Event Location">Event Location:</label>
           <input
             onChange={handleChange}
@@ -58,7 +58,7 @@ const CreateEventForm = ({ user }) => {
             value={formState.location}
           />
         </div>
-        <div>
+        <div className='e-des'>
           <label htmlFor="Event Description">Event Description:</label>
           <textarea
             rows="4"
@@ -68,7 +68,9 @@ const CreateEventForm = ({ user }) => {
             value={formState.description}
           />
         </div>
-        <button type="submit">Submit</button>
+        <div className='sub-event-btn'>
+          <button id="sub-btn" type="submit">Submit</button>
+        </div>
       </form>
     </div>
   )

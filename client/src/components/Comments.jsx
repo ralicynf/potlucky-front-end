@@ -57,7 +57,7 @@ const Comments = ({ user, eventId }) => {
         </div>
       ))}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="comment">Write a comment... </label>
+        <label htmlFor="comment">Leave a comment  </label>
         <input
           type="text"
           id="comment"
