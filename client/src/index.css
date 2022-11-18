@@ -12,21 +12,30 @@ code {
     monospace;
 }
 
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   margin: 0;
 }
 
-a { margin: 0px 5px}
-a:link { text-decoration: none; }
-a:visited { 
+a {
+  margin: 0px 5px;
+}
+a:link {
+  text-decoration: none;
+}
+a:visited {
   text-decoration: none;
   color: black;
 }
-a:hover { 
-  text-decoration: none; 
+a:hover {
+  text-decoration: none;
   color: #727272;
 }
-a:active { text-decoration: none; }
+a:active {
+  text-decoration: none;
+}
 
 .flex-row {
   display: flex;
@@ -71,7 +80,7 @@ a:active { text-decoration: none; }
   border-radius: 10px;
 }
 .event-card:hover {
-  opacity: .6;
+  opacity: 0.6;
 }
 
 .buffer {
@@ -97,6 +106,26 @@ a:active { text-decoration: none; }
   border: 2px solid red;
 }
 
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+
+#comment-header-username {
+  margin-left: 4px;
+}
+
+.item-listing {
+  display: flex;
+  justify-content: left;
+  align-items: center;
+  margin-top: 2px;
+}
+
+#item-listing-content {
+  margin-left: 4px;
+}
+
 .col {
   text-align: center;
   display: flex;
@@ -109,7 +138,7 @@ a:active { text-decoration: none; }
 }
 
 .the-btn {
-  text-align: right
+  text-align: right;
 }
 
 .hello {
@@ -120,24 +149,23 @@ a:active { text-decoration: none; }
 }
 
 .input-reg {
-  width: 30vw
+  width: 30vw;
 }
 
 .login-button {
-  text-align: left
+  text-align: left;
 }
 
 .things {
   display: flex;
   flex-direction: row;
-  justify-content: space-between; 
+  justify-content: space-between;
 }
 
 #login-btn {
-  width: 200px
+  width: 200px;
 }
 
-
 .login-input {
- width: 275px
+  width: 275px;
 }

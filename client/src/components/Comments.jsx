@@ -1,5 +1,6 @@
 import { useEffect, useState } from 'react'
 import { GetCommentsForEvent, CreateComment } from '../services/CommentServices'
+import Avatar from 'boring-avatars'
 
 const Comments = ({ user, eventId }) => {
   const initialState = {
@@ -37,7 +38,15 @@ const Comments = ({ user, eventId }) => {
     <div>
       {comments.map((comment) => (
         <div className="comment" key={comment.id}>
-          <h5>{comment.author.username}</h5>
+          <div className="comment-header">
+            <Avatar
+              size={40}
+              name={comment.author.name}
+              variant="beam"
+              colors={['#F9DED3', '#FDD1B6', '#FAB4B6', '#C7B6BE', '#89ABB4']}
+            />
+            <h5 id="comment-header-username">{comment.author.username}</h5>
+          </div>
           <section className="comment-content">
             <p>{comment.comment}</p>
             {comment.createdAt === comment.updatedAt ? <b></b> : <b>edited</b>}
@@ -48,7 +57,7 @@ const Comments = ({ user, eventId }) => {
         </div>
       ))}
       <form onSubmit={handleSubmit}>
-        <label htmlFor="comment">Write a comment...</label>
+        <label htmlFor="comment">Write a comment... </label>
         <input
           type="text"
           id="comment"
