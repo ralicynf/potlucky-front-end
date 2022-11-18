@@ -1,3 +1,5 @@
+// For a future update...
+
 import { useNavigate } from 'react-router-dom'
 
 const Profile = ({ user }) => {
