@@ -57,7 +57,6 @@ a:active {
   justify-content: space-between;
 }
 
-
 #nav-logo {
   margin: 10px;
   font-family: 'Righteous', cursive;
@@ -70,6 +69,7 @@ a:active {
   top: 0;
   z-index: 1;
   font-family: 'Lato', sans-serif;
+  color: #103942
 }
 
 body {
@@ -372,4 +372,8 @@ input[type=text], textarea, input[type="datetime-local"], input[type=password] {
 
 .indent {
   margin: 10px 0px 20px 10px;
+}
+
+.bring-me {
+  margin: 5px 5px 5px 10px
 }

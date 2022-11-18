@@ -31,7 +31,7 @@ const EventCard = (details) => {
                             {details.items.find((item) => item.userId===details.userId) && <h4>You are bringing:</h4>}
                             {details.items.map((item) => 
                                 <div key={item.id}>
-                                    {(item.userId===details.userId) ? <p >{item.itemName}</p> : <></>}
+                                    {(item.userId===details.userId) ? <p className='bring-me' >{item.itemName}</p> : <></>}
                                 </div>
                             )}
                         </div>
