@@ -86,8 +86,8 @@ body {
   justify-content: space-between;
 }
 
-.card,
-.main-card {
+.card, .main-card, .attend-card {
+
   background-color: #ffede5;
   filter: drop-shadow(1px 1px 2px #c7b6be);
   margin: 20px 0px;
@@ -436,4 +436,8 @@ input[type='password'] {
 
 .flex-start {
   align-items: flex-start;
+}
+
+.over {
+  opacity: .5;
 }
