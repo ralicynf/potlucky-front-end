@@ -15,14 +15,14 @@ const ShareLink = () => {
   return (
     <div className="share-container">
       <div className="share-section">
-        <h4>
+        <h5>
           Share this link:{' '}
           {`https://feelingpotlucky.herokuapp.com${location.pathname}`}
-        </h4>
+        </h5>
         <div className="share">
           {!copied ? (
             <button id="copy-btn" type="button" onClick={handleClick}>
-              copy
+              Copy
             </button>
           ) : (
             <h6>Copied!</h6>
