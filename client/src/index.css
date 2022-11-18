@@ -62,10 +62,18 @@ a:active {
 
 #header {
   background-color: white;
-  filter: drop-shadow(1px 1px 2px rgb(194, 194, 194));
+  filter: drop-shadow(1px 1px 2px #c7b6be);
   position: sticky;
   top: 0;
   z-index: 1;
+}
+
+body {
+  background-image: url('https://i.imgur.com/KHI0Bvf.jpg');
+  background-attachment: fixed;
+  background-position: center-center;
+  background-repeat: repeat-y;
+  background-size: cover; 
 }
 
 .nav-links {
@@ -73,8 +81,9 @@ a:active {
 }
 
 .card {
-  background-color: rgb(217, 242, 254);
-  filter: drop-shadow(1px 1px 2px rgb(194, 194, 194));
+  /* background-color: rgb(217, 242, 254); */
+  background-color: #ffede5;
+  filter: drop-shadow(1px 1px 2px #c7b6be);
   margin: 20px 0px;
   /* padding: 10px; */
   border-radius: 10px;
