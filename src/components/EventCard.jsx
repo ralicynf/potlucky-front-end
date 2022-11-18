@@ -1,4 +1,8 @@
 const EventCard = (details) => {
+    const isInThePast = (date) => {
+        const today = new Date().toISOString()
+        return date < today
+    }
 
     const formatDate = (dateString) => {
         const options = { year: "numeric", month: "long", day: "numeric" }
@@ -10,8 +14,9 @@ const EventCard = (details) => {
         return new Date(dateString).toLocaleTimeString('en-US', options)
     }
 
-    return (
-            <div className="card" onClick={ () => {details.onClick(details.id)}}>
+    const PastEvent = ({ isOver }) => {
+        return (
+            <div className={isOver ? 'over card' : 'card'} onClick={ () => {details.onClick(details.id)}}>
                 <div className="buffer">
                     <div>
                         <h3 className='event-name'>{details.eventName}</h3>
@@ -38,6 +43,13 @@ const EventCard = (details) => {
                         )}
                     </div>
                 </div>
+            </div>
+        )
+    }
+
+    return (
+            <div>
+                <PastEvent isOver={isInThePast(details.eventDate)}/>
             </div>
     )
 }

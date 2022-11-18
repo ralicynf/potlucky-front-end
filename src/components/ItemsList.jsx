@@ -6,7 +6,7 @@ import {
   DeleteItem
 } from '../services/ItemServices'
 
-const ItemsList = ({ user, eventId }) => {
+const ItemsList = ({ user, eventId, isOver }) => {
   const [items, setItems] = useState([])
   const [addItem, setAddItem] = useState()
 
@@ -58,12 +58,13 @@ const ItemsList = ({ user, eventId }) => {
             {item.userItems.name} is bringing {item.itemName}
           </p>
           <div>
-          {item.userId === user.id ? <button id='delete-item-btn' onClick={()=> deleteItem(item.id)}>X</button> : <></>}
+          {item.userId === user.id && !isOver ? <button id='delete-item-btn' onClick={()=> deleteItem(item.id)}>X</button> : <></>}
           </div>
 
         </div>
       ))} 
       <div className='add-item-box'>
+        {!isOver &&
         <form onSubmit={handleSubmit}>
             <input
             type="text"
@@ -72,7 +73,7 @@ const ItemsList = ({ user, eventId }) => {
             onChange={handleChange}
             />
             <button id='add-btn'type="submit">Add</button>
-        </form>
+        </form>}
       </div>
     </div>
   )
