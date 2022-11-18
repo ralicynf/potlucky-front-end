@@ -45,7 +45,7 @@ const Comments = ({ user, eventId }) => {
               variant="beam"
               colors={['#F9DED3', '#FDD1B6', '#FAB4B6', '#C7B6BE', '#89ABB4']}
             />
-            <h5>{comment.author.username}</h5>
+            <h5 id="comment-header-username">{comment.author.username}</h5>
           </div>
           <section className="comment-content">
             <p>{comment.comment}</p>

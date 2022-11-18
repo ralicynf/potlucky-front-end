@@ -106,6 +106,15 @@ a:active {
   border: 2px solid red;
 }
 
+.comment-header {
+  display: flex;
+  align-items: center;
+}
+
+#comment-header-username {
+  margin-left: 4px;
+}
+
 .item-listing {
   display: flex;
   justify-content: left;
@@ -114,6 +123,5 @@ a:active {
 }
 
 #item-listing-content {
-  display: block;
   margin-left: 4px;
 }
