@@ -31,39 +31,49 @@ const Home = ({ user, setUser }) => {
         <div className="events-container flex-row">
           <div className="hosting-card-container">
             <h2 className="title">Hosting</h2>
-            {userHostedEvents.map((event) => (
-              <div key={event.id} className="main-card">
-                <EventCard
-                  id={event.id}
-                  isHost={true}
-                  eventName={event.eventName}
-                  eventDate={event.date}
-                  eventLocation={event.location}
-                  eventDescription={event.description}
-                  items={event.items}
-                  userId={user.id}
-                  onClick={viewEventDetails}
-                />
-              </div>
-            ))}
+            {userHostedEvents.length > 0 ? (
+              userHostedEvents.map((event) => (
+                <div key={event.id} className="main-card">
+                  <EventCard
+                    id={event.id}
+                    isHost={true}
+                    eventName={event.eventName}
+                    eventDate={event.date}
+                    eventLocation={event.location}
+                    eventDescription={event.description}
+                    items={event.items}
+                    userId={user.id}
+                    onClick={viewEventDetails}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="main-card">You're not hosting any events</div>
+            )}
           </div>
           <div className="attending-card-container">
             <h2 className="title">Attending</h2>
-            {events.map((event) => (
-              <div key={event.id} className="attend-card">
-                <EventCard
-                  id={event.id}
-                  isHost={false}
-                  eventName={event.eventName}
-                  eventDate={event.date}
-                  eventLocation={event.location}
-                  eventDescription={event.description}
-                  items={event.items}
-                  userId={user.id}
-                  onClick={viewEventDetails}
-                />
+            {events.length > 0 ? (
+              events.map((event) => (
+                <div key={event.id} className="attend-card">
+                  <EventCard
+                    id={event.id}
+                    isHost={false}
+                    eventName={event.eventName}
+                    eventDate={event.date}
+                    eventLocation={event.location}
+                    eventDescription={event.description}
+                    items={event.items}
+                    userId={user.id}
+                    onClick={viewEventDetails}
+                  />
+                </div>
+              ))
+            ) : (
+              <div className="attending-card">
+                You're not attending any events
               </div>
-            ))}
+            )}
           </div>
         </div>
       </div>
