@@ -125,3 +125,46 @@ a:active {
 #item-listing-content {
   margin-left: 4px;
 }
+.col {
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+}
+
+#register-button {
+  width: 100px;
+  text-align: center;
+}
+
+.the-btn {
+  text-align: right;
+}
+
+.hello {
+  text-align: left;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+.input-reg {
+  width: 30vw;
+}
+
+.login-button {
+  text-align: left;
+}
+
+.things {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#login-btn {
+  width: 200px;
+}
+
+.login-input {
+  width: 275px;
+}

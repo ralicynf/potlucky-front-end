@@ -55,8 +55,9 @@ const EventDetails = ({ user }) => {
   }
 
   const deleteOnClick = async (e) => {
-    await DeleteEvent(eventDetails.id)
-    navigate('/')
+    if (window.confirm("Are you sure you wish to delete this event?")) {
+      await DeleteEvent(eventDetails.id)
+      navigate('/')}
   }
 
   useEffect(() => {

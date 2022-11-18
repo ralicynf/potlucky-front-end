@@ -36,9 +36,10 @@ const Register = () => {
       <div className="events-container card">
         <div className="buffer">
           <form className="col" onSubmit={handleSubmit}>
-            <div>
-              <label htmlFor="username">Username</label>
+            <div className='hello'>
+              <label htmlFor="username">Username  </label>
               <input
+                className='input-reg'
                 onChange={handleChange}
                 name="username"
                 type="text"
@@ -47,9 +48,10 @@ const Register = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="name">Name</label>
+            <div className='hello'>
+              <label htmlFor="name">Name  </label>
               <input
+              className='input-reg'
                 onChange={handleChange}
                 name="name"
                 type="text"
@@ -58,9 +60,10 @@ const Register = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="email">Email</label>
+            <div className='hello'>
+              <label htmlFor="email">Email  </label>
               <input
+                className='input-reg'
                 onChange={handleChange}
                 name="email"
                 type="text"
@@ -69,9 +72,10 @@ const Register = () => {
                 required
               />
             </div>
-            <div>
-              <label htmlFor="password">Password</label>
+            <div className='hello'>
+              <label htmlFor="password">Password  </label>
               <input
+                className='input-reg'
                 onChange={handleChange}
                 name="password"
                 type="password"
@@ -80,7 +84,10 @@ const Register = () => {
                 required
               />
             </div>
-            <button>Register</button>
+            <div className='the-btn'>
+              <button id="register-button">Register</button>
+            </div>
+            
           </form>
         </div>
       </div>
