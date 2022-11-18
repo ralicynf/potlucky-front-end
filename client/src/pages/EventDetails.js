@@ -107,7 +107,7 @@ const EventDetails = ({ user }) => {
             ) : (
               <div>
                 <h4>Host:</h4>
-                <p>{eventDetails?.hostedBy.name}</p>
+                <p className='indent'>{eventDetails?.hostedBy.name}</p>
               </div>
             )}
           </div>
@@ -151,16 +151,16 @@ const EventDetails = ({ user }) => {
                 {user && (
                   <div>
                     <h4>When:</h4>
-                    <p>
+                    <p className='indent'>
                       {formatDate(eventDetails?.date)} at{' '}
                       {formatTime(eventDetails?.date)}
                     </p>
                     <h4>Where:</h4>
-                    <p>{eventDetails?.location}</p>
+                    <p className='indent'>{eventDetails?.location}</p>
                   </div>
                 )}
                 <h4>What:</h4>
-                <p>{eventDetails?.description}</p>
+                <p className='indent'>{eventDetails?.description}</p>
               </div>
             )}
           </div>
