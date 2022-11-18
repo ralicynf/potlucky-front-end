@@ -1,5 +1,10 @@
 import { useState, useEffect } from 'react'
-import { GetListItemsForEvent, AddItem, DeleteItem } from '../services/ItemServices'
+import Avatar from 'boring-avatars'
+import {
+  GetListItemsForEvent,
+  AddItem,
+  DeleteItem
+} from '../services/ItemServices'
 
 const ItemsList = ({ user, eventId }) => {
   const [items, setItems] = useState([])
@@ -13,12 +18,11 @@ const ItemsList = ({ user, eventId }) => {
   }
 
   const deleteItem = async (itemId) => {
-    if (window.confirm("Are you sure you wish to delete this item?")) {
+    if (window.confirm('Are you sure you wish to delete this item?')) {
       await DeleteItem(itemId)
     }
     retrieveItems()
   }
-
 
   useEffect(() => {
     if (user) retrieveItems()
@@ -38,15 +42,21 @@ const ItemsList = ({ user, eventId }) => {
       eventId: eventId
     })
   }
-  
+
   return (
     <div>
       {items?.map((item) => (
-        <div key={item.id}>
-          <p>
+        <div key={item.id} className="item-listing">
+          <Avatar
+            size={40}
+            name={item.userItems.name}
+            variant="beam"
+            colors={['#F9DED3', '#FDD1B6', '#FAB4B6', '#C7B6BE', '#89ABB4']}
+          />
+          <p id="item-listing-content">
             {item.userItems.name} is bringing {item.itemName}
           </p>
-          <button onClick={()=> deleteItem(item.id)}>X</button>
+          <button onClick={() => deleteItem(item.id)}>X</button>
         </div>
       ))}
       <form onSubmit={handleSubmit}>
@@ -60,7 +70,6 @@ const ItemsList = ({ user, eventId }) => {
       </form>
     </div>
   )
-
 }
 
 export default ItemsList
