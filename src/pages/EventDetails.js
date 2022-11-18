@@ -24,10 +24,13 @@ const EventDetails = ({ user }) => {
   const [edit, setEdit] = useState(false)
   const [formState, setFormState] = useState(initialState)
   const [sharing, setSharing] = useState(false)
+  const [isOver, setIsOver] = useState(false)
 
   const handleEventDetails = async () => {
     const data = await GetEventById(id)
     setEventDetails(data)
+    const eventDate = isInThePast(data.date)
+    setIsOver(eventDate)
   }
 
   const handleClick = async (e) => {
@@ -62,6 +65,11 @@ const EventDetails = ({ user }) => {
     }
   }
 
+  const isInThePast = (date) => {
+    const today = new Date().toISOString()
+    return date < today
+  }
+
   useEffect(() => {
     handleEventDetails()
   }, [user])
@@ -83,30 +91,39 @@ const EventDetails = ({ user }) => {
           <div className="event-detail-header">
             <h2 id="event-name">{eventDetails?.eventName}</h2>
             <div className="share-deets">
-              <button
-                className="share-event-button"
-                type="button"
-                onClick={() => {
-                  sharing ? setSharing(false) : setSharing(true)
-                }}
-              >
-                Share?
-              </button>
+              {!isOver && (
+                <button
+                  className="share-event-button"
+                  type="button"
+                  onClick={() => {
+                    sharing ? setSharing(false) : setSharing(true)
+                  }}
+                >
+                  Share?
+                </button>
+              )}
               {sharing && <ShareLink />}
             </div>
           </div>
           <div>
             {user?.id === eventDetails?.hostedBy.id ? (
               <div className="your-event">
-                <p>You are hosting this event</p>
-                <div className="edit-and-delete">
-                  <button id="edit-btn" onClick={editOnClick}>
-                    Edit
-                  </button>
-                  <button id="delete-btn" onClick={deleteOnClick}>
-                    Delete
-                  </button>
-                </div>
+                {isOver ? (
+                  <p>You hosted this event</p>
+                ) : (
+                  <p>You are hosting this event</p>
+                )}
+
+                {!isOver && (
+                  <div className="edit-and-delete">
+                    <button id="edit-btn" onClick={editOnClick}>
+                      Edit
+                    </button>
+                    <button id="delete-btn" onClick={deleteOnClick}>
+                      Delete
+                    </button>
+                  </div>
+                )}
               </div>
             ) : (
               <div>
@@ -157,10 +174,17 @@ const EventDetails = ({ user }) => {
                 {user && (
                   <div>
                     <h4>When:</h4>
-                    <p className="indent">
-                      {formatDate(eventDetails?.date)} at{' '}
-                      {formatTime(eventDetails?.date)}
-                    </p>
+                    {isOver ? (
+                      <p>
+                        You missed the party! It was on{' '}
+                        {formatDate(eventDetails?.date)}
+                      </p>
+                    ) : (
+                      <p className="indent">
+                        {formatDate(eventDetails?.date)} at{' '}
+                        {formatTime(eventDetails?.date)}
+                      </p>
+                    )}
                     <h4>Where:</h4>
                     <p className="indent">{eventDetails?.location}</p>
                   </div>
@@ -214,7 +238,7 @@ const EventDetails = ({ user }) => {
                     <h4>What is everyone bringing?</h4>
                   </div>
                   <div className="items-list-of-things">
-                    <ItemsList user={user} eventId={id} />
+                    <ItemsList user={user} eventId={id} isOver={isOver} />
                   </div>
                 </div>
               </div>
