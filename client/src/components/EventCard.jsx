@@ -14,14 +14,17 @@ const EventCard = (details) => {
             <div className="card" onClick={ () => {details.onClick(details.id)}}>
                 <div className="buffer">
                     <div>
-                        <h3>{details.eventName}</h3>
+                        <h3 className='event-name'>{details.eventName}</h3>
                     </div>
                     <div>
-                        <p>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
-                        <p>{details.eventLocation}</p>
+
+                        <div className='dateLoc'>
+                          <p>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
+                          <p>{details.eventLocation}</p>
+                        </div>
                         {details.isHost ? (
-                            <div>
-                                <p>{details.eventDescription}</p>
+                            <div className='details-description'>
+                                <h4>{details.eventDescription}</h4>
                             </div>
                         ) : (
                         <div>

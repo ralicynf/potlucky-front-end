@@ -12,16 +12,18 @@ const ShareLink = () => {
 
   return (
     <div className="share-container">
-      <h3>Share this link: {`http://localhost:3000${location.pathname}`}</h3>
-      <section>
-        {!copied ? (
-          <button type="button" onClick={handleClick}>
-            copy
-          </button>
-        ) : (
-          <h6>Done</h6>
-        )}
-      </section>
+      <div className='share-section'>
+        <h4>Share this link: {`http://localhost:3000${location.pathname}`}</h4>
+        <div className='share'>
+          {!copied ? (
+            <button id="copy-btn" type="button" onClick={handleClick}>
+              copy
+            </button>
+          ) : (
+            <h6>Copied!</h6>
+          )}
+        </div>
+      </div>
     </div>
   )
 }

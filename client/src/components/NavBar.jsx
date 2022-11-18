@@ -23,7 +23,7 @@ const NavBar = ({ user, handleLogout, randomEvent }) => {
         <Link to="/">Home</Link>
         {/* <Link to="/profile">Profile</Link> */}
         <Link to="/newevent">Create Event</Link>
-        <a onClick={getRandomEvent}>Feeling PotLucky?</a>
+        <a id='potlucky' onClick={getRandomEvent}>Feeling PotLucky?</a>
         {/* <Link to={`/events/${randomEvent}`}>Feeling Potlucky?</Link> */}
         <Link onClick={handleLogout} to="/">
           Sign Out

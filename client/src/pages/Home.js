@@ -27,40 +27,44 @@ const Home = ({ user, setUser }) => {
   return user ? (
     <div>
       <div className="flex-column">
-        <h2 id="homepage-header">Upcoming Events</h2>
+        <h1 id="homepage-header">Upcoming Events</h1>
         <div className="events-container flex-row">
           <div className="hosting-card-container">
-            <h2>Hosting</h2>
+            <h2 className='title'>Hosting</h2>
             {userHostedEvents.map((event) => (
-              <EventCard
-                key={event.id}
-                id={event.id}
-                isHost={true}
-                eventName={event.eventName}
-                eventDate={event.date}
-                eventLocation={event.location}
-                eventDescription={event.description}
-                items={event.items}
-                userId={user.id}
-                onClick={viewEventDetails}
-              />
+              <div className='main-card'>
+                <EventCard
+                  key={event.id}
+                  id={event.id}
+                  isHost={true}
+                  eventName={event.eventName}
+                  eventDate={event.date}
+                  eventLocation={event.location}
+                  eventDescription={event.description}
+                  items={event.items}
+                  userId={user.id}
+                  onClick={viewEventDetails}
+                />
+              </div>
             ))}
           </div>
           <div className="attending-card-container">
-            <h2>Attending</h2>
+            <h2 className='title'>Attending</h2>
             {events.map((event) => (
-              <EventCard
-                key={event.id}
-                id={event.id}
-                isHost={false}
-                eventName={event.eventName}
-                eventDate={event.date}
-                eventLocation={event.location}
-                eventDescription={event.description}
-                items={event.items}
-                userId={user.id}
-                onClick={viewEventDetails}
-              />
+              <div className='attend-card'>
+                <EventCard
+                  key={event.id}
+                  id={event.id}
+                  isHost={false}
+                  eventName={event.eventName}
+                  eventDate={event.date}
+                  eventLocation={event.location}
+                  eventDescription={event.description}
+                  items={event.items}
+                  userId={user.id}
+                  onClick={viewEventDetails}
+                />
+              </div>
             ))}
           </div>
         </div>

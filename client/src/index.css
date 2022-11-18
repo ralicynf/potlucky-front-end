@@ -56,8 +56,10 @@ a:active {
   justify-content: space-between;
 }
 
+
 #nav-logo {
   margin: 10px;
+  font-family: 'Righteous', cursive;
 }
 
 #header {
@@ -66,6 +68,7 @@ a:active {
   position: sticky;
   top: 0;
   z-index: 1;
+  font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -74,20 +77,29 @@ body {
   background-position: center-center;
   background-repeat: repeat-y;
   background-size: cover; 
+  font-family: 'Lato', sans-serif;
+  color:#103942
 }
 
 .nav-links {
   justify-content: space-between;
 }
 
-.card {
+.card, .main-card {
   /* background-color: rgb(217, 242, 254); */
   background-color: #ffede5;
   filter: drop-shadow(1px 1px 2px #c7b6be);
   margin: 20px 0px;
   /* padding: 10px; */
-  border-radius: 10px;
+  border-radius: 10px}
+
+
+.main-card:hover, .attend-card:hover { 
+  transform: scale(1.05);
+  filter: drop-shadow(10px 10px 20px #c7b6be);
+  
 }
+
 .event-card:hover {
   opacity: 0.6;
 }
@@ -141,40 +153,201 @@ body {
   flex-direction: column;
 }
 
-#register-button {
+#register-button, #login-btn, #reg-btn, #sub-btn, .share-event-button, #edit-btn, #delete-btn, #copy-btn, #sub-btn-2, .signin-btn, .register-btn, #rsvp-btn {
   width: 100px;
   text-align: center;
+  background-color: #fff6f2; /* Green */
+  border: 2px solid #89abb4; 
+  color: #89abb4;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  transition-duration: 0.2s; 
 }
 
-.the-btn {
+#register-button:hover, #login-btn:hover, #reg-btn:hover, #sub-btn:hover, .share-event-button:hover, #copy-btn:hover, #edit-btn:hover, #delete-btn:hover, #sub-btn-2:hover, .signin-btn:hover, .register-btn:hover, #add-btn:hover, #delete-item-btn:hover, #rsvp-btn:hover {
+  background-color: #89abb4;
+  color: #fff6f2
+}
+
+.the-btn, #login-button {
   text-align: right;
+  margin: 8px 30px;
 }
 
-.hello {
+.hello, .things {
   text-align: left;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 8px 30px
 }
 
 .input-reg {
   width: 30vw;
 }
 
-.login-button {
-  text-align: left;
+.login-input {
+  width: 275px;
 }
 
-.things {
+.new-user {
+  margin: 8px 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#login-btn {
-  width: 200px;
+#newbie {
+  margin: 0px 50px 0px 0px
 }
 
-.login-input {
-  width: 275px;
+#homepage-header {
+  margin: 40px;
+  color: #103942;
+  border: 2px solid rgba(137, 171, 180, 0.6);
+  padding: 10px 50px; 
+  background-color: rgba(137, 171, 180, 0.6);
+  
+}
+
+.event-name {
+  border-bottom: 2px solid #89abb4;
+  margin: 5px 0px 10px 0px;
+  color: #103942;
+
+}
+
+.title {
+  margin: 0px 0px 0px 0px;
+  color: #103942;
+  border: 2px solid rgba(137, 171, 180, 0.6);
+  padding: 3px;
+  background-color: rgba(137, 171, 180, 0.6);
+}
+
+.details-description {
+  color: #103942
+}
+
+.dateLoc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#new-event-logo {
+  color:#103942
+}
+
+.the-form {
+  color:#103942;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  font-weight: bold;
+}
+
+.e-name, .e-date, .e-loc, .e-des {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px
+}
+
+#description {
+  margin: 0px 0px 0px 40px
+}
+
+.sub-event-btn {
+  text-align: center;
+}
+
+input[type=text], textarea, input[type="datetime-local"], input[type=password] {
+  border: 2px solid #fdd1b6;
+  background-color: solid #fff6f2
+}
+
+.event-detail-header, .your-event {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 10px
+}
+
+#event-name {
+  margin: -10px;
+}
+
+#edit-btn, #delete-btn {
+  margin: 0px 0px 10px 10px
+}
+
+.edit-and-delete {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+#date, #location, #description {
+  margin: 10px
+}
+
+.share-deets, .share-section {
+  display: flex;
+  flex-direction: column;
+  justify-content: right;
+  align-items: flex-end;
+}
+
+#add-btn, #delete-item-btn {
+  width: 50px;
+  text-align: center;
+  background-color: #fff6f2; /* Green */
+  border: 2px solid #89abb4; 
+  color: #89abb4;
+  padding: 2px;
+  text-align: center;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: bold;
+  transition-duration: 0.2s; 
+  margin: 0px 0px 0px 10px
+}
+
+#delete-item-btn {
+  width: 25px
+}
+
+.items-list-of-things {
+  margin: 10px 5px 5px 20px
+}
+
+.add-item-box {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-evenly;
+}
+#itemName {
+  width: 20vw;
+  height: 20px
+}
+
+.comment {
+  background-color: rgba(137, 171, 180, 0.3);
+  border-radius: 10px;
+}
+
+.comment-header, .comment-content, .comment-date {
+  margin: 20px 20px
+}
+
+.comment-date {
+  text-align: right
+}
+
+#potlucky:hover {
+  color: #fab4b6
 }

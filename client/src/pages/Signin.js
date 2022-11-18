@@ -63,9 +63,9 @@ const SignIn = ({ setUser }) => {
               <button id="login-btn">Sign in!</button>
             </div>
           </form>
-          <div>
-            <p>New user?</p>
-            <button onClick={() => navigate('/register')}>Register</button>
+          <div className='new-user'>
+            <p id='newbie'>New user?</p>
+            <button id='reg-btn' onClick={() => navigate('/register')}>Register</button>
           </div>
         </div>
       </div>
