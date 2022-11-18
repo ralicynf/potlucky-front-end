@@ -373,3 +373,7 @@ input[type=text], textarea, input[type="datetime-local"], input[type=password] {
 .indent {
   margin: 10px 0px 20px 10px;
 }
+
+.flex-start {
+  align-items: flex-start;
+}

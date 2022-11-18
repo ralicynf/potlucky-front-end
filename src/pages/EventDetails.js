@@ -80,41 +80,45 @@ const EventDetails = ({ user }) => {
     <div className="flex-column">
       <div className="events-container card">
         <div className="buffer">
-          <div className='event-detail-header'>
-            <h2 id='event-name'>{eventDetails?.eventName}</h2>
-              <div className='share-deets'>
-                <button
-                  className="share-event-button"
-                  type="button"
-                  onClick={() => {
-                    sharing ? setSharing(false) : setSharing(true)
-                  }}
-                >
-                  Share?
-                </button>
-                {sharing && <ShareLink />}
-              </div>
+          <div className="event-detail-header">
+            <h2 id="event-name">{eventDetails?.eventName}</h2>
+            <div className="share-deets">
+              <button
+                className="share-event-button"
+                type="button"
+                onClick={() => {
+                  sharing ? setSharing(false) : setSharing(true)
+                }}
+              >
+                Share?
+              </button>
+              {sharing && <ShareLink />}
             </div>
+          </div>
           <div>
             {user?.id === eventDetails?.hostedBy.id ? (
-              <div className='your-event'>
+              <div className="your-event">
                 <p>You are hosting this event</p>
-                <div className='edit-and-delete'>
-                  <button id='edit-btn' onClick={editOnClick}>Edit</button>
-                  <button id='delete-btn' onClick={deleteOnClick}>Delete</button>
+                <div className="edit-and-delete">
+                  <button id="edit-btn" onClick={editOnClick}>
+                    Edit
+                  </button>
+                  <button id="delete-btn" onClick={deleteOnClick}>
+                    Delete
+                  </button>
                 </div>
               </div>
             ) : (
               <div>
                 <h4>Host:</h4>
-                <p className='indent'>{eventDetails?.hostedBy.name}</p>
+                <p className="indent">{eventDetails?.hostedBy.name}</p>
               </div>
             )}
           </div>
           <div>
             {edit ? (
               <form onSubmit={handleSubmit}>
-                <div className='when'>
+                <div className="when">
                   <h4>When:</h4>
                   <input
                     type="datetime-local"
@@ -123,7 +127,7 @@ const EventDetails = ({ user }) => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className='where'> 
+                <div className="where">
                   <h4>Where:</h4>
                   <input
                     type="text"
@@ -132,7 +136,7 @@ const EventDetails = ({ user }) => {
                     onChange={handleChange}
                   />
                 </div>
-                <div className='what'>
+                <div className="what">
                   <h4>What:</h4>
                   <textarea
                     rows="4"
@@ -142,8 +146,10 @@ const EventDetails = ({ user }) => {
                     value={formState.description}
                   />
                 </div>
-                <div className='sub-btn-the-second'>
-                  <button id='sub-btn-2' type="submit">Submit</button>
+                <div className="sub-btn-the-second">
+                  <button id="sub-btn-2" type="submit">
+                    Submit
+                  </button>
                 </div>
               </form>
             ) : (
@@ -151,16 +157,16 @@ const EventDetails = ({ user }) => {
                 {user && (
                   <div>
                     <h4>When:</h4>
-                    <p className='indent'>
+                    <p className="indent">
                       {formatDate(eventDetails?.date)} at{' '}
                       {formatTime(eventDetails?.date)}
                     </p>
                     <h4>Where:</h4>
-                    <p className='indent'>{eventDetails?.location}</p>
+                    <p className="indent">{eventDetails?.location}</p>
                   </div>
                 )}
                 <h4>What:</h4>
-                <p className='indent'>{eventDetails?.description}</p>
+                <p className="indent">{eventDetails?.description}</p>
               </div>
             )}
           </div>
@@ -171,15 +177,27 @@ const EventDetails = ({ user }) => {
                 <></>
               ) : (
                 <div>
-                  <button id='rsvp-btn' onClick={handleClick}>RSVP</button>
+                  <button id="rsvp-btn" onClick={handleClick}>
+                    RSVP
+                  </button>
                 </div>
               )}
             </div>
           ) : (
             <div>
               <h3>Please sign in or register to RSVP</h3>
-              <button className='signin-btn' onClick={() => navigate('/signin')}>Sign In</button>
-              <button className='register-btn' onClick={() => navigate('/register')}>Register</button>
+              <button
+                className="signin-btn"
+                onClick={() => navigate('/signin')}
+              >
+                Sign In
+              </button>
+              <button
+                className="register-btn"
+                onClick={() => navigate('/register')}
+              >
+                Register
+              </button>
             </div>
           )}
         </div>
@@ -187,15 +205,15 @@ const EventDetails = ({ user }) => {
       {user &&
       (eventDetails?.attendees.find((guest) => guest.id === user.id) ||
         user?.id === eventDetails?.hostedBy.id) ? (
-        <div className="events-container flex-row">
+        <div className="events-container flex-row flex-start">
           <div className="hosting-card-container">
             <div className="card">
               <div className="buffer">
-                <div className='items-list'>
-                  <div className='items-header'>
+                <div className="items-list">
+                  <div className="items-header">
                     <h4>What is everyone bringing?</h4>
                   </div>
-                  <div className='items-list-of-things'>
+                  <div className="items-list-of-things">
                     <ItemsList user={user} eventId={id} />
                   </div>
                 </div>
@@ -203,7 +221,7 @@ const EventDetails = ({ user }) => {
             </div>
             <div className="card">
               <div className="buffer">
-                <div className='comments-sect'>
+                <div className="comments-sect">
                   <h4>Comments:</h4>
                   <Comments user={user} eventId={id} />
                 </div>
