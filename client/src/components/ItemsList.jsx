@@ -58,20 +58,22 @@ const ItemsList = ({ user, eventId }) => {
             {item.userItems.name} is bringing {item.itemName}
           </p>
           <div>
-          {item.userId === user.id ? <button onClick={()=> deleteItem(item.id)}>X</button> : <></>}
+          {item.userId === user.id ? <button id='delete-item-btn' onClick={()=> deleteItem(item.id)}>X</button> : <></>}
           </div>
 
         </div>
-      ))}
-      <form onSubmit={handleSubmit}>
-        <input
-          type="text"
-          id="itemName"
-          value={addItem?.itemName || ''}
-          onChange={handleChange}
-        />
-        <button type="submit">Add</button>
-      </form>
+      ))} 
+      <div className='add-item-box'>
+        <form onSubmit={handleSubmit}>
+            <input
+            type="text"
+            id="itemName"
+            value={addItem?.itemName || ''}
+            onChange={handleChange}
+            />
+            <button id='add-btn'type="submit">Add</button>
+        </form>
+      </div>
     </div>
   )
 }

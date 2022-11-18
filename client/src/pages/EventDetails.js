@@ -80,23 +80,29 @@ const EventDetails = ({ user }) => {
     <div className="flex-column">
       <div className="events-container card">
         <div className="buffer">
-          <h2>{eventDetails?.eventName}</h2>
-          <button
-            className="share-event button"
-            type="button"
-            onClick={() => {
-              sharing ? setSharing(false) : setSharing(true)
-            }}
-          >
-            Share?
-          </button>
-          {sharing && <ShareLink />}
+          <div className='event-detail-header'>
+            <h2 id='event-name'>{eventDetails?.eventName}</h2>
+              <div className='share-deets'>
+                <button
+                  className="share-event-button"
+                  type="button"
+                  onClick={() => {
+                    sharing ? setSharing(false) : setSharing(true)
+                  }}
+                >
+                  Share?
+                </button>
+                {sharing && <ShareLink />}
+              </div>
+            </div>
           <div>
             {user?.id === eventDetails?.hostedBy.id ? (
-              <div>
-                <p>this is your event</p>
-                <button onClick={editOnClick}>Edit</button>
-                <button onClick={deleteOnClick}>Delete</button>
+              <div className='your-event'>
+                <p>You are hosting this event</p>
+                <div className='edit-and-delete'>
+                  <button id='edit-btn' onClick={editOnClick}>Edit</button>
+                  <button id='delete-btn' onClick={deleteOnClick}>Delete</button>
+                </div>
               </div>
             ) : (
               <div>
@@ -108,29 +114,37 @@ const EventDetails = ({ user }) => {
           <div>
             {edit ? (
               <form onSubmit={handleSubmit}>
-                <h4>When:</h4>
-                <input
-                  type="datetime-local"
-                  value={formState.date}
-                  id="date"
-                  onChange={handleChange}
-                />
-                <h4>Where:</h4>
-                <input
-                  type="text"
-                  value={formState.location}
-                  id="location"
-                  onChange={handleChange}
-                />
-                <h4>What:</h4>
-                <textarea
-                  rows="4"
-                  cols="50"
-                  onChange={handleChange}
-                  id="description"
-                  value={formState.description}
-                />
-                <button type="submit">Submit</button>
+                <div className='when'>
+                  <h4>When:</h4>
+                  <input
+                    type="datetime-local"
+                    value={formState.date}
+                    id="date"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className='where'> 
+                  <h4>Where:</h4>
+                  <input
+                    type="text"
+                    value={formState.location}
+                    id="location"
+                    onChange={handleChange}
+                  />
+                </div>
+                <div className='what'>
+                  <h4>What:</h4>
+                  <textarea
+                    rows="4"
+                    cols="50"
+                    onChange={handleChange}
+                    id="description"
+                    value={formState.description}
+                  />
+                </div>
+                <div className='sub-btn-the-second'>
+                  <button id='sub-btn-2' type="submit">Submit</button>
+                </div>
               </form>
             ) : (
               <div>
@@ -157,15 +171,15 @@ const EventDetails = ({ user }) => {
                 <></>
               ) : (
                 <div>
-                  <button onClick={handleClick}>RSVP</button>
+                  <button id='rsvp-btn' onClick={handleClick}>RSVP</button>
                 </div>
               )}
             </div>
           ) : (
             <div>
               <h3>Please sign in or register to RSVP</h3>
-              <button onClick={() => navigate('/signin')}>Sign In</button>
-              <button onClick={() => navigate('/register')}>Register</button>
+              <button className='signin-btn' onClick={() => navigate('/signin')}>Sign In</button>
+              <button className='register-btn' onClick={() => navigate('/register')}>Register</button>
             </div>
           )}
         </div>
@@ -177,14 +191,22 @@ const EventDetails = ({ user }) => {
           <div className="hosting-card-container">
             <div className="card">
               <div className="buffer">
-                <h4>Add item:</h4>
-                <ItemsList user={user} eventId={id} />
+                <div className='items-list'>
+                  <div className='items-header'>
+                    <h4>What is everyone bringing?</h4>
+                  </div>
+                  <div className='items-list-of-things'>
+                    <ItemsList user={user} eventId={id} />
+                  </div>
+                </div>
               </div>
             </div>
             <div className="card">
               <div className="buffer">
-                <h4>Comments:</h4>
-                <Comments user={user} eventId={id} />
+                <div className='comments-sect'>
+                  <h4>Comments:</h4>
+                  <Comments user={user} eventId={id} />
+                </div>
               </div>
             </div>
           </div>
