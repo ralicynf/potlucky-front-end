@@ -70,7 +70,7 @@ const Comments = ({ user, eventId }) => {
     <div>
       <h2>Write the first comment!</h2>
       <form onSubmit={handleSubmit}>
-        <label htmlFor="comment">Write a comment...</label>
+        <label htmlFor="comment">Write a comment... </label>
         <input
           type="text"
           id="comment"
