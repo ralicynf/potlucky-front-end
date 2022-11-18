@@ -13,7 +13,6 @@ export const AddItem = async (items) => {
   try {
     const res = await Client.post(`/items`, items)
     return res.data
-    console.log(items)
   } catch (error) {
     throw error
   }
