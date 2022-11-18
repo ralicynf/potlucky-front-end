@@ -27,7 +27,7 @@ const Home = ({ user, setUser }) => {
   return user ? (
     <div>
       <div className="flex-column">
-        <h2>Upcoming Events</h2>
+        <h2 id="homepage-header">Upcoming Events</h2>
         <div className="events-container flex-row">
           <div className="hosting-card-container">
             <h2>Hosting</h2>
