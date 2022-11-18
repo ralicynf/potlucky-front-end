@@ -6,15 +6,20 @@ const ShareLink = () => {
   const [copied, setCopied] = useState(false)
 
   const handleClick = () => {
-    navigator.clipboard.writeText(`http://localhost:3000${location.pathname}`)
+    navigator.clipboard.writeText(
+      `https://feelingpotlucky.herokuapp.com${location.pathname}`
+    )
     setCopied(true)
   }
 
   return (
     <div className="share-container">
-      <div className='share-section'>
-        <h4>Share this link: {`http://localhost:3000${location.pathname}`}</h4>
-        <div className='share'>
+      <div className="share-section">
+        <h4>
+          Share this link:{' '}
+          {`https://feelingpotlucky.herokuapp.com${location.pathname}`}
+        </h4>
+        <div className="share">
           {!copied ? (
             <button id="copy-btn" type="button" onClick={handleClick}>
               copy

@@ -30,11 +30,10 @@ const Home = ({ user, setUser }) => {
         <h1 id="homepage-header">Upcoming Events</h1>
         <div className="events-container flex-row">
           <div className="hosting-card-container">
-            <h2 className='title'>Hosting</h2>
+            <h2 className="title">Hosting</h2>
             {userHostedEvents.map((event) => (
-              <div className='main-card'>
+              <div key={event.id} className="main-card">
                 <EventCard
-                  key={event.id}
                   id={event.id}
                   isHost={true}
                   eventName={event.eventName}
@@ -49,11 +48,10 @@ const Home = ({ user, setUser }) => {
             ))}
           </div>
           <div className="attending-card-container">
-            <h2 className='title'>Attending</h2>
+            <h2 className="title">Attending</h2>
             {events.map((event) => (
-              <div className='attend-card'>
+              <div key={event.id} className="attend-card">
                 <EventCard
-                  key={event.id}
                   id={event.id}
                   isHost={false}
                   eventName={event.eventName}
