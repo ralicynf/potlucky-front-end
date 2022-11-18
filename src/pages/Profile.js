@@ -1,25 +1,27 @@
-import { useNavigate } from 'react-router-dom'
+// For a future update...
 
-const Profile = ({ user }) => {
-  let navigate = useNavigate()
+// import { useNavigate } from 'react-router-dom'
 
-  return user ? (
-    <div>
-      <div>
-        <h1>Welcome!</h1>
-      </div>
-      <div>
-        <h3>User Details</h3>
-        <h6>Name: </h6>
-        <h6>Username:</h6>
-      </div>
-    </div>
-  ) : (
-    <div className="protected">
-      <h3>Oops! You must be signed in to do that!</h3>
-      <button onClick={() => navigate('/signin')}>Sign In</button>
-    </div>
-  )
-}
+// const Profile = ({ user }) => {
+//   let navigate = useNavigate()
 
-export default Profile
+//   return user ? (
+//     <div>
+//       <div>
+//         <h1>Welcome!</h1>
+//       </div>
+//       <div>
+//         <h3>User Details</h3>
+//         <h6>Name: </h6>
+//         <h6>Username:</h6>
+//       </div>
+//     </div>
+//   ) : (
+//     <div className="protected">
+//       <h3>Oops! You must be signed in to do that!</h3>
+//       <button onClick={() => navigate('/signin')}>Sign In</button>
+//     </div>
+//   )
+// }
+
+// export default Profile
