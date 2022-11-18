@@ -35,6 +35,7 @@ const NavBar = ({ user, handleLogout, randomEvent }) => {
   const publicOptions = (
     <nav className="flex-row nav-links">
       <Link to="/">Home</Link>
+      <a onClick={getRandomEvent}>Feeling PotLucky?</a>
       <Link to="/register">Register</Link>
       <Link to="/signin">Sign In</Link>
     </nav>
