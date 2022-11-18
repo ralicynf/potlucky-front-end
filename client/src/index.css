@@ -56,8 +56,10 @@ a:active {
   justify-content: space-between;
 }
 
+
 #nav-logo {
   margin: 10px;
+  font-family: 'Righteous', cursive;
 }
 
 #header {
@@ -66,6 +68,7 @@ a:active {
   position: sticky;
   top: 0;
   z-index: 1;
+  font-family: 'Lato', sans-serif;
 }
 
 body {
@@ -74,6 +77,7 @@ body {
   background-position: center-center;
   background-repeat: repeat-y;
   background-size: cover; 
+  font-family: 'Lato', sans-serif;
 }
 
 .nav-links {
@@ -141,40 +145,80 @@ body {
   flex-direction: column;
 }
 
-#register-button {
+#register-button, #login-btn, #reg-btn {
   width: 100px;
   text-align: center;
+  background-color: #fff6f2; /* Green */
+  border: 2px solid #89abb4; 
+  color: #89abb4;
+  padding: 5px;
+  text-align: center;
+  display: inline-block;
+  font-size: 16px;
+  font-weight: bold;
+  transition-duration: 0.2s; 
 }
 
-.the-btn {
+#register-button:hover, #login-btn:hover, #reg-btn:hover {
+  background-color: #89abb4;
+  color: #fff6f2
+}
+
+.the-btn, #login-button {
   text-align: right;
+  margin: 8px 30px;
 }
 
-.hello {
+.hello, .things {
   text-align: left;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin: 8px 30px
 }
 
 .input-reg {
   width: 30vw;
 }
 
-.login-button {
-  text-align: left;
+.login-input {
+  width: 275px;
 }
 
-.things {
+.new-user {
+  margin: 8px 30px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;
 }
 
-#login-btn {
-  width: 200px;
+#newbie {
+  margin: 0px 50px 0px 0px
 }
 
-.login-input {
-  width: 275px;
+#homepage-header {
+  margin: 40px;
+  color: #103942;
+  border: 2px solid rgba(137, 171, 180, 0.6);
+  padding: 10px 50px; 
+  background-color: rgba(137, 171, 180, 0.6);
+  
+}
+
+.event-name {
+  border-bottom: 2px solid #89abb4;
+  margin: 5px 0px 10px 0px;
+  color: #103942;
+
+}
+
+.title {
+  margin: 0px 0px 0px 0px;
+  color: #103942
+}
+
+.dateLoc {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
 }
