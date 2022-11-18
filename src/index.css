@@ -27,7 +27,7 @@ a:link {
 }
 a:visited {
   text-decoration: none;
-  color: black;
+  color: #103942;
 }
 a:hover {
   text-decoration: none;
@@ -233,9 +233,17 @@ body {
 }
 
 .dateLoc {
-  display: flex;
-  flex-direction: row;
+  display: grid;
+  grid-template-columns: [col1-start] 50% [col1-col2] 50% [col2-end];
   justify-content: space-between;
+}
+
+.date-card {
+  text-align: left
+}
+
+.loc-card {
+  text-align: right
 }
 
 #new-event-logo {
@@ -377,6 +385,7 @@ input[type=text], textarea, input[type="datetime-local"], input[type=password] {
 
 .bring-me {
   margin: 5px 5px 5px 10px
+}
 
 .flex-start {
   align-items: flex-start;

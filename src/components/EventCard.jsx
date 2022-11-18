@@ -19,8 +19,8 @@ const EventCard = (details) => {
                     <div>
 
                         <div className='dateLoc'>
-                          <p>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
-                          <p>{details.eventLocation}</p>
+                          <p className='date-card'>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
+                          <p className='loc-card'>{details.eventLocation}</p>
                         </div>
                         {details.isHost ? (
                             <div className='details-description'>
