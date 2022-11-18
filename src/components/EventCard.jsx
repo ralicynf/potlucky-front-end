@@ -19,8 +19,8 @@ const EventCard = (details) => {
                     <div>
 
                         <div className='dateLoc'>
-                          <p>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
-                          <p>{details.eventLocation}</p>
+                          <p className='date-card'>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
+                          <p className='loc-card'>{details.eventLocation}</p>
                         </div>
                         {details.isHost ? (
                             <div className='details-description'>
@@ -31,7 +31,7 @@ const EventCard = (details) => {
                             {details.items.find((item) => item.userId===details.userId) && <h4>You are bringing:</h4>}
                             {details.items.map((item) => 
                                 <div key={item.id}>
-                                    {(item.userId===details.userId) ? <p >{item.itemName}</p> : <></>}
+                                    {(item.userId===details.userId) ? <p className='bring-me' >{item.itemName}</p> : <></>}
                                 </div>
                             )}
                         </div>
