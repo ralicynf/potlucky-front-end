@@ -20,9 +20,14 @@ const SignIn = ({ setUser }) => {
   const handleSubmit = async (e) => {
     e.preventDefault()
     const payload = await SignInUser(formState)
-    await setUser(payload)
-    setFormState(startState)
-    navigate('/')
+    if (payload) {
+      await setUser(payload)
+      setFormState(startState)
+      navigate('/')
+    } else {
+      window.alert('Incorrect Email or Password')
+      setFormState({ email: formState.email, password: '' })
+    }
   }
 
   return (
@@ -30,10 +35,10 @@ const SignIn = ({ setUser }) => {
       <div className="events-container card">
         <div className="buffer">
           <form className="sign-in-box" onSubmit={handleSubmit}>
-            <div className='things'>
+            <div className="things">
               <label htmlFor="email">Email</label>
               <input
-                className='login-input'
+                className="login-input"
                 onChange={handleChange}
                 name="email"
                 type="text"
@@ -42,10 +47,10 @@ const SignIn = ({ setUser }) => {
                 required
               />
             </div>
-            <div className='things'>
+            <div className="things">
               <label htmlFor="password">Password</label>
               <input
-                className='login-input'
+                className="login-input"
                 onChange={handleChange}
                 name="password"
                 type="password"
@@ -54,8 +59,8 @@ const SignIn = ({ setUser }) => {
                 required
               />
             </div>
-            <div id='login-button'>
-              <button id='login-btn'>Sign in!</button>
+            <div id="login-button">
+              <button id="login-btn">Sign in!</button>
             </div>
           </form>
           <div className='new-user'>

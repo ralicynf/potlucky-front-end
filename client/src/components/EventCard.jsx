@@ -1,5 +1,15 @@
 const EventCard = (details) => {
 
+    const formatDate = (dateString) => {
+        const options = { year: "numeric", month: "long", day: "numeric" }
+        return new Date(dateString).toLocaleDateString(undefined, options)
+    }
+
+    const formatTime = (dateString) => {
+        const options = { timeStyle: 'short'}
+        return new Date(dateString).toLocaleTimeString('en-US', options)
+    }
+
     return (
             <div className="card" onClick={ () => {details.onClick(details.id)}}>
                 <div className="buffer">
@@ -7,9 +17,10 @@ const EventCard = (details) => {
                         <h3 className='event-name'>{details.eventName}</h3>
                     </div>
                     <div>
+
                         <div className='dateLoc'>
-                            <p>{details.eventDate}</p>
-                            <p>{details.eventLocation}</p>
+                          <p>{formatDate(details.eventDate)} at {formatTime(details.eventDate)}</p>
+                          <p>{details.eventLocation}</p>
                         </div>
                         {details.isHost ? (
                             <div>
