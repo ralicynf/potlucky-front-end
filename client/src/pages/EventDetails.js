@@ -9,6 +9,7 @@ import {
   DeleteEvent,
   UpdateEvent
 } from '../services/EventServices'
+import Avatar from 'boring-avatars'
 
 const EventDetails = ({ user }) => {
   let { id } = useParams()
@@ -191,8 +192,20 @@ const EventDetails = ({ user }) => {
             <div className="buffer">
               <h4>Who:</h4>
               {eventDetails?.attendees.map((guest) => (
-                <div key={guest.id}>
-                  <p>{guest.name}</p>
+                <div key={guest.id} className="attendee-listing">
+                  <Avatar
+                    size={40}
+                    name={guest.name}
+                    variant="beam"
+                    colors={[
+                      '#F9DED3',
+                      '#FDD1B6',
+                      '#FAB4B6',
+                      '#C7B6BE',
+                      '#89ABB4'
+                    ]}
+                  />
+                  <p id="attendee-listing-content">{guest.name}</p>
                 </div>
               ))}
             </div>
