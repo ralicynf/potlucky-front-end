@@ -48,7 +48,7 @@ const Home = ({ user, setUser }) => {
                 </div>
               ))
             ) : (
-              <div className="main-card">You're not hosting any events</div>
+              <div className="main-card"> You're not hosting any events</div>
             )}
           </div>
           <div className="attending-card-container">
@@ -70,9 +70,7 @@ const Home = ({ user, setUser }) => {
                 </div>
               ))
             ) : (
-              <div className="attending-card">
-                You're not attending any events
-              </div>
+              <div className="card"> You're not attending any events</div>
             )}
           </div>
         </div>
