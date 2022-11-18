@@ -55,9 +55,10 @@ const EventDetails = ({ user }) => {
   }
 
   const deleteOnClick = async (e) => {
-    if (window.confirm("Are you sure you wish to delete this event?")) {
+    if (window.confirm('Are you sure you wish to delete this event?')) {
       await DeleteEvent(eventDetails.id)
-      navigate('/')}
+      navigate('/')
+    }
   }
 
   useEffect(() => {
@@ -93,59 +94,43 @@ const EventDetails = ({ user }) => {
               </div>
             )}
           </div>
-          {user ? (
-            <div>
-              {edit ? (
-                <form onSubmit={handleSubmit}>
-                  <h4>When:</h4>
-                  <input
-                    type="datetime-local"
-                    value={formState.date}
-                    id="date"
-                    onChange={handleChange}
-                  />
-                </form>
-              ) : (
-                <div>
-                  <h4>When:</h4>
-                  <p>{eventDetails?.date}</p>
-                </div>
-              )}
+          <div>
+            {edit ? (
+              <form onSubmit={handleSubmit}>
+                <h4>When:</h4>
+                <input
+                  type="datetime-local"
+                  value={formState.date}
+                  id="date"
+                  onChange={handleChange}
+                />
+                <h4>Where:</h4>
+                <input
+                  type="text"
+                  value={formState.location}
+                  id="location"
+                  onChange={handleChange}
+                />
+                <h4>What:</h4>
+                <textarea
+                  rows="4"
+                  cols="50"
+                  onChange={handleChange}
+                  id="description"
+                  value={formState.description}
+                />
+                <button type="submit">Submit</button>
+              </form>
+            ) : (
               <div>
-                {edit ? (
-                  <form onSubmit={handleSubmit}>
-                    <h4>Where:</h4>
-                    <input
-                      type="text"
-                      value={formState.location}
-                      id="location"
-                      onChange={handleChange}
-                    />
-                  </form>
-                ) : (
+                {user && (
                   <div>
+                    <h4>When:</h4>
+                    <p>{eventDetails?.date}</p>
                     <h4>Where:</h4>
                     <p>{eventDetails?.location}</p>
                   </div>
                 )}
-              </div>
-            </div>
-          ) : (
-            <div></div>
-          )}
-          <div>
-            {edit ? (
-              <form onSubmit={handleSubmit}>
-                <h4>What:</h4>
-                <input
-                  type="text"
-                  value={formState.description}
-                  id="description"
-                  onChange={handleChange}
-                />
-              </form>
-            ) : (
-              <div>
                 <h4>What:</h4>
                 <p>{eventDetails?.description}</p>
               </div>

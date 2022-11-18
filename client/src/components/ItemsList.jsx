@@ -42,11 +42,14 @@ const ItemsList = ({ user, eventId }) => {
   return (
     <div>
       {items?.map((item) => (
-        <div key={item.id}>
+        <div key={item.id} className='flex-row nav-links'> 
+        {/* nav-links class name could change lol */}
           <p>
             {item.userItems.name} is bringing {item.itemName}
           </p>
-          <button onClick={()=> deleteItem(item.id)}>X</button>
+          <div>
+          {item.userId === user.id ? <button onClick={()=> deleteItem(item.id)}>X</button> : <></>}
+          </div>
         </div>
       ))}
       <form onSubmit={handleSubmit}>
