@@ -91,20 +91,20 @@ const EventDetails = ({ user }) => {
           <div className="event-detail-header">
             <h2 id="event-name">{eventDetails?.eventName}</h2>
             <div className="share-deets">
-
               {!isOver && (
-              {sharing && <ShareLink />}
-                <button
-                  className="share-event-button"
-                  type="button"
-                  onClick={() => {
-                    sharing ? setSharing(false) : setSharing(true)
-                  }}
-                >
-                  Share?
-                </button>
+                <div>
+                  {sharing && <ShareLink />}
+                  <button
+                    className="share-event-button"
+                    type="button"
+                    onClick={() => {
+                      sharing ? setSharing(false) : setSharing(true)
+                    }}
+                  >
+                    Share?
+                  </button>
+                </div>
               )}
-              
             </div>
           </div>
           <div>
